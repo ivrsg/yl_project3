@@ -11,9 +11,18 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
+def nick(name):
+    con = sqlite3.connect('finance.db')
+    cur = con.cursor()
+    nickname = cur.execute("""SELECT nickname FROM users
+                        WHERE username=?""", (name,)).fetchone()[0]
+    if not nickname:
+        nickname = name
+    con.close()
+    return nickname
+
 
 async def start(update, context):
-    print(context)
     con = sqlite3.connect('finance.db')
     cur = con.cursor()
     name = update.message.from_user.username
@@ -23,10 +32,54 @@ async def start(update, context):
         # добавляет к бд если новый пользователь
         cur.execute("""INSERT INTO users(username) VALUES(?)""", (name,))
         con.commit()
-    con.close()
+
     reply_keyboard = [['/add'], ['/lim']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
-    await update.message.reply_text('Здравствуйте...', reply_markup=markup)  # дописать красиво
+    nickname = cur.execute("""SELECT nickname FROM users
+                    WHERE username=?""", (name,)).fetchone()[0]
+    if nickname:
+        context.user_data['nickname'] = nickname
+        name = nickname
+    con.close()
+    await update.message.reply_text(f'Здравствуйте...{name}))', reply_markup=markup)
+
+
+async def help(update, context):
+    name = update.message.from_user.username
+    await update.message.reply_text(f'Здравствуйте...{nick(name)}))\n'
+                                    f'\n'
+                                    f'Вот список команд для настройки бота: \n'
+                                    f'\n'
+                                    f'/rename - установите, как  к вам будет обращаться бот.\n'
+                                    f'/stop - возвращение в главное меню.\n'
+                                    f'/clear - очистить все данные пользователя.\n'
+                                    f'/add_category - добавить собственную категорию трат')
+
+
+async def rename(update, context):
+    con = sqlite3.connect('finance.db')
+    cur = con.cursor()
+    name = update.message.from_user.username
+    result = cur.execute("""SELECT id FROM users
+                    WHERE username=?""", (name,)).fetchall()
+    if not result:
+        cur.execute("""INSERT INTO users(username) VALUES(?)""", (name,))
+        con.commit()
+    con.close()
+    await update.message.reply_text(f'Как к вам обращаться...{name}? ))')
+    return 1
+
+
+async def set_nickname(update, context):
+    context.user_data['nickname'] = update.message.text
+    nickname = context.user_data['nickname']
+    con = sqlite3.connect('finance.db')
+    cur = con.cursor()
+    name = update.message.from_user.username
+    cur.execute("UPDATE users SET nickname = ? WHERE username = ?", (nickname, name))
+    con.commit()
+    con.close()
+    await update.message.reply_text(f'Теперь вы для меня {context.user_data["nickname"]}... ))')
 
 
 async def add(update, context):
@@ -106,7 +159,7 @@ async def add_regular(update, context):
 
 
 async def lim(update, context):
-    reply_keyboard = [['Транспорт', 'Здоровье'], ['Продукты питания', 'Рестораны и кафе']]
+    reply_keyboard = [['Транспорт', 'Здоровье'], ['Кафе/Продукты', 'Развлечения']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
     await update.message.reply_text('На какую категорию вы хотите установить лимит?',
                                     reply_markup=markup)
@@ -160,6 +213,7 @@ async def stop(update, context):
 def main():
     application = Application.builder().token(TOKEN).build()
     application.add_handler(CommandHandler("start", start))
+    application.add_handler(CommandHandler("help", help))
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('add', add)],
         states={
@@ -175,6 +229,13 @@ def main():
         states={
             1: [MessageHandler(filters.TEXT & ~filters.COMMAND, limcategor)],
             2: [MessageHandler(filters.TEXT & ~filters.COMMAND, limsum)]},
+        fallbacks=[CommandHandler('stop', stop)]
+    )
+    application.add_handler(conv_handler)
+    conv_handler = ConversationHandler(
+        entry_points=[CommandHandler('rename', rename)],
+        states={
+            1: [MessageHandler(filters.TEXT & ~filters.COMMAND, set_nickname)]},
         fallbacks=[CommandHandler('stop', stop)]
     )
     application.add_handler(conv_handler)
