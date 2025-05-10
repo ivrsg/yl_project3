@@ -2,6 +2,7 @@ import logging
 from telegram.ext import Application, MessageHandler, filters, CommandHandler, ConversationHandler
 from telegram import ReplyKeyboardMarkup
 from telegram import ReplyKeyboardRemove
+from configs import TOKEN
 import sqlite3
 
 logging.basicConfig(
@@ -34,7 +35,7 @@ async def add(update, context):
 
 
 async def add1(update, context):
-    reply_keyboard = [['Транспорт', 'Здоровье'], ['Продукты питания', 'Рестораны и кафе']]  # добавить че-нибудь
+    reply_keyboard = [['Транспорт', 'Здоровье'], ['Кафе/Продукты', 'Развлечения']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
     if update.message.text == 'Добавить единоразовую трату':
         await update.message.reply_text('Выберите к какой категории она относится.', reply_markup=markup)
@@ -63,9 +64,9 @@ async def add_one_sum(update, context):
         usid = cur.execute("""SELECT id FROM users
                         WHERE username=?""", (name,)).fetchall()[0][0]
         cteg = cur.execute("""SELECT id, sum, lim FROM expenses
-                        WHERE users_id=? and categoty=?""", (usid, context.user_data['category'])).fetchall()
+                        WHERE users_id=? and category=?""", (usid, context.user_data['category'])).fetchall()
         if not cteg:
-            cur.execute("""INSERT INTO expenses(users_id, categoty, sum, regular) VALUES(?, ?, ?, False)""",
+            cur.execute("""INSERT INTO expenses(users_id, category, sum, regular) VALUES(?, ?, ?, False)""",
                         (usid, context.user_data['category'], float(update.message.text)))
             reply_keyboard = [['/add'], ['/lim']]
             markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
@@ -103,16 +104,16 @@ async def add_regular(update, context):
 
 
 async def lim(update, context):
-    reply_keyboard = [['Транспорт', 'Здоровье'], ['Продукты питания', 'Рестораны и кафе']]  # добавить че-нибудь
+    reply_keyboard = [['Транспорт', 'Здоровье'], ['Продукты питания', 'Рестораны и кафе']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
-    await update.message.reply_text('На какую категорию хотите добавить лимит потраченных денег?',
+    await update.message.reply_text('На какую категорию вы хотите установить лимит?',
                                     reply_markup=markup)
     return 1
 
 
 async def limcategor(update, context):
     context.user_data['category'] = update.message.text
-    await update.message.reply_text('На какую сумму установить лимит?\n'
+    await update.message.reply_text('Какой лимит вы хотите установить?\n'
                                     'Напишите только сумму в рублях в формате "рубли.копейки".',
                                     reply_markup=ReplyKeyboardRemove())
     return 2
@@ -126,9 +127,9 @@ async def limsum(update, context):
         usid = cur.execute("""SELECT id FROM users
                         WHERE username=?""", (name,)).fetchall()[0][0]
         cteg = cur.execute("""SELECT id FROM expenses
-                        WHERE users_id=? and categoty=?""", (usid, context.user_data['category'])).fetchall()
+                        WHERE users_id=? and category=?""", (usid, context.user_data['category'])).fetchall()
         if not cteg:
-            cur.execute("""INSERT INTO expenses(users_id, categoty, lim, regular) VALUES(?, ?, ?, False)""",
+            cur.execute("""INSERT INTO expenses(users_id, category, lim, regular) VALUES(?, ?, ?, False)""",
                         (usid, context.user_data['category'], float(update.message.text)))
         else:
             cur.execute("""UPDATE expenses
@@ -142,7 +143,7 @@ async def limsum(update, context):
         con.close()
         return ConversationHandler.END
     except Exception:
-        await update.message.reply_text('На какую сумму установить лимит?\n'
+        await update.message.reply_text('Какой лимит вы хотите установить?\n'
                                         'Напишите только сумму в рублях в формате "рубли.копейки".')
         return 2
 
@@ -155,7 +156,7 @@ async def stop(update, context):
 
 
 def main():
-    application = Application.builder().token('7255612015:AAHSQS5bedNOAVwyJglo2tXYFizBbzB_DmM').build()
+    application = Application.builder().token(TOKEN).build()
     application.add_handler(CommandHandler("start", start))
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('add', add)],
