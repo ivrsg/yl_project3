@@ -6,12 +6,14 @@ from configs import TOKEN
 import sqlite3
 
 logging.basicConfig(
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.DEBUG)
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', filename='logging.log', level=logging.DEBUG)
 
 logger = logging.getLogger(__name__)
 
 
+
 async def start(update, context):
+    print(context)
     con = sqlite3.connect('finance.db')
     cur = con.cursor()
     name = update.message.from_user.username
