@@ -133,7 +133,7 @@ async def limsum(update, context):
         else:
             cur.execute("""UPDATE expenses
             SET lim = ?
-            WHERE id = ?""", (float(update.message.text), cteg[0][0]))  # добавить проверку на лимит
+            WHERE id = ?""", (float(update.message.text), cteg[0][0]))
         reply_keyboard = [['/add'], ['/lim']]
         markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
         await update.message.reply_text('Готово!',
