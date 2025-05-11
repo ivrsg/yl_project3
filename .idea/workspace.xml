@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fefb362-eb6f-4fe8-98e8-a7a063b8fdeb" name="Changes" comment="добавлена orm модель, реорганизация струткутры проекта">
+    <list default="true" id="5fefb362-eb6f-4fe8-98e8-a7a063b8fdeb" name="Changes" comment="удалила какй-то файл">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/finance.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/finance.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/logging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/idnfafr" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +121,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746963756232</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="работа с пользователем через орм модель, очистка данных о пользователе по /clear, устранение ошибок при выходе из диалога /rename">
+      <option name="closed" value="true" />
+      <created>1746970126581</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1746970126581</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -146,6 +152,8 @@
     <MESSAGE value="логирование в отдельном файле" />
     <MESSAGE value="хелп и переименовывание" />
     <MESSAGE value="добавлена orm модель, реорганизация струткутры проекта" />
-    <option name="LAST_COMMIT_MESSAGE" value="добавлена orm модель, реорганизация струткутры проекта" />
+    <MESSAGE value="работа с пользователем через орм модель, очистка данных о пользователе по /clear, устранение ошибок при выходе из диалога /rename" />
+    <MESSAGE value="удалила какй-то файл" />
+    <option name="LAST_COMMIT_MESSAGE" value="удалила какй-то файл" />
   </component>
 </project>
