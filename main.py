@@ -7,6 +7,7 @@ import sqlite3
 from flask import Flask
 from data import db_session
 from data.users import User
+from datetime import *
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', filename='logging.log', level=logging.DEBUG)
@@ -157,7 +158,97 @@ async def add_one_sum(update, context):
 
 
 async def add_regular(update, context):
-    ...  # добавить регулярные платежи
+    if update.message.text in ['Транспорт', 'Здоровье', 'Кафе/Продукты', 'Развлечения']:
+        context.user_data['category'] = update.message.text
+        await update.message.reply_text('Когда был/будет первый платеж?\n'
+                                        'Напишите только дату и время в формате "гггг-мм-дд чч:мм:сс".',
+                                        reply_markup=ReplyKeyboardRemove())
+        return 5
+    await update.message.reply_text('Выберите к какой категории она относится.')
+    return 3
+
+
+async def regular_per(update, context):
+    try:
+        dt = update.message.text.split()
+        dt = datetime.combine(date(dt[0].split('-')[0], dt[0].split('-')[1], dt[0].split('-')[2]),
+                              time(dt[1].split(':')[0], dt[1].split(':')[1], dt[1].split(':')[2]))
+        context.user_data['dt'] = dt
+        print(dt)
+        await update.message.reply_text('На какую сумму и с какой периодичностью будут происходить платежи?\n'
+                                        'Напишите только сумму в рублях и периодичность в днях в формате'
+                                        ' "рубли.копейки дни".')
+        return 6
+    except Exception:
+        await update.message.reply_text('Когда был/будет первый платеж?\n'
+                                        'Напишите только дату и время в формате "гггг-мм-дд чч:мм:сс".')
+        return 5
+
+
+async def regular_sum(update, context):
+    try:
+        sad = update.message.text.split()
+        if (len(str(float(sad[0])).split('.')[-1]) > 2 or float(sad[0]) <= 0
+                or int(sad[1]) <= 0):
+            int('придумали тут')
+        con = sqlite3.connect('db/finance.db')
+        cur = con.cursor()
+        name = update.message.from_user.username
+        usid = cur.execute("""SELECT id FROM users
+                        WHERE username=?""", (name,)).fetchall()[0][0]
+        ctegid = cur.execute("""SELECT id FROM expenses
+                        WHERE users_id=? and category=?""", (usid,)).fetchall()
+        if not ctegid:
+            cur.execute(
+                """INSERT INTO expenses(users_id, category, regular, first_regular, period, sum_regular)
+                 VALUES(?, ?, True, ?, ?, ?)""",
+                (usid, context.user_data['category'], context.user_data['dt'], int(sad[1]), float(sad[0])))
+        else:
+            cur.execute("""UPDATE expenses
+            SET (regular, first_regular, period, sum_regular) = True, ?, ?, ?
+            WHERE id = ?""", (context.user_data['dt'], int(sad[1]), float(sad[0]), ctegid[0][0]))
+        timer = context.user_data['dt'] - datetime.now() + timedelta(days=(int(sad[1]) - 1))
+        while timer.total_seconds() <= 0:
+            timer += timedelta(days=(int(sad[1]) - 1))
+        chat_id = update.effective_message.chat_id
+        context.job_queue.run_once(task, timer.total_seconds(), chat_id=chat_id, name=context.user_data['category'],
+                                   data=timer.total_seconds())
+        reply_keyboard = [['/add'], ['/lim']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
+        await update.message.reply_text('Готово!',
+                                        reply_markup=markup)
+        con.commit()
+        con.close()
+        return ConversationHandler.END
+    except Exception:
+        await update.message.reply_text('На какую сумму и с какой периодичностью будут происходить платежи?\n'
+                                        'Напишите только сумму в рублях и периодичность в днях в формате'
+                                        ' "рубли.копейки дни".')
+        return 6
+
+
+async def task(context):
+    await context.bot.send_message(context.job.chat_id, text=f'Через день у вас назначен плановый платеж.'
+                                                             f'если ходите его отменить, вызовите функцию /unset')
+
+
+def remove_job_if_exists(name, context):
+    current_jobs = context.job_queue.get_jobs_by_name(name)
+    if not current_jobs:
+        return False
+    for job in current_jobs:
+        job.schedule_removal()
+    return True
+
+
+async def unset(update, context):
+    chat_id = update.message.chat_id
+    job_removed = remove_job_if_exists(context.user_data['category'], context)
+    if job_removed:
+        text = f'Регулярные платежи отменены в категории {context.user_data["category"]}'
+    else:
+        text = 'У вас нет регулярных платежей в этой категории'
+    await update.message.reply_text(text)
 
 
 async def lim(update, context):
@@ -228,7 +319,9 @@ def main():
             1: [MessageHandler(filters.TEXT & ~filters.COMMAND, add1)],
             2: [MessageHandler(filters.TEXT & ~filters.COMMAND, add_one)],
             3: [MessageHandler(filters.TEXT & ~filters.COMMAND, add_regular)],
-            4: [MessageHandler(filters.TEXT & ~filters.COMMAND, add_one_sum)]},
+            4: [MessageHandler(filters.TEXT & ~filters.COMMAND, add_one_sum)],
+            5: [MessageHandler(filters.TEXT & ~filters.COMMAND, regular_per)],
+            6: [MessageHandler(filters.TEXT & ~filters.COMMAND, regular_sum)]},
         fallbacks=[CommandHandler('stop', stop)]
     )
     application.add_handler(conv_handler)
