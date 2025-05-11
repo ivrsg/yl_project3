@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fefb362-eb6f-4fe8-98e8-a7a063b8fdeb" name="Changes" comment="с аватракой, описанием и переим категорией">
-      <change afterPath="$PROJECT_DIR$/logging.log" afterDir="false" />
+    <list default="true" id="5fefb362-eb6f-4fe8-98e8-a7a063b8fdeb" name="Changes" comment="хелп и переименовывание">
+      <change afterPath="$PROJECT_DIR$/data/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,6 +38,34 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Днс/PycharmProjects/YLproject3TgBot&quot;
   }
 }</component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="YLproject3TgBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration>C:\Users\Днс\AppData\Roaming\Subversion</configuration>
@@ -56,12 +86,41 @@
       <option name="project" value="LOCAL" />
       <updated>1746891034367</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="логирование в отдельном файле">
+      <option name="closed" value="true" />
+      <created>1746891442741</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1746891442742</updated>
+    </task>
+    <task id="LOCAL-00003" summary="логирование в отдельном файле">
+      <option name="closed" value="true" />
+      <created>1746891586743</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1746891586743</updated>
+    </task>
+    <task id="LOCAL-00004" summary="хелп и переименовывание">
+      <option name="closed" value="true" />
+      <created>1746896330902</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1746896330902</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="123" />
     <MESSAGE value="с аватракой, описанием и переим категорией" />
-    <option name="LAST_COMMIT_MESSAGE" value="с аватракой, описанием и переим категорией" />
+    <MESSAGE value="логирование в отдельном файле" />
+    <MESSAGE value="хелп и переименовывание" />
+    <option name="LAST_COMMIT_MESSAGE" value="хелп и переименовывание" />
   </component>
 </project>

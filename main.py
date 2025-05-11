@@ -4,15 +4,19 @@ from telegram import ReplyKeyboardMarkup
 from telegram import ReplyKeyboardRemove
 from configs import TOKEN
 import sqlite3
+from flask import Flask
+from data import db_session
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', filename='logging.log', level=logging.DEBUG)
 
 logger = logging.getLogger(__name__)
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
 def nick(name):
-    con = sqlite3.connect('finance.db')
+    con = sqlite3.connect('db/finance.db')
     cur = con.cursor()
     nickname = cur.execute("""SELECT nickname FROM users
                         WHERE username=?""", (name,)).fetchone()[0]
@@ -23,7 +27,7 @@ def nick(name):
 
 
 async def start(update, context):
-    con = sqlite3.connect('finance.db')
+    con = sqlite3.connect('db/finance.db')
     cur = con.cursor()
     name = update.message.from_user.username
     result = cur.execute("""SELECT id FROM users
@@ -57,7 +61,7 @@ async def help(update, context):
 
 
 async def rename(update, context):
-    con = sqlite3.connect('finance.db')
+    con = sqlite3.connect('db/finance.db')
     cur = con.cursor()
     name = update.message.from_user.username
     result = cur.execute("""SELECT id FROM users
@@ -73,7 +77,7 @@ async def rename(update, context):
 async def set_nickname(update, context):
     context.user_data['nickname'] = update.message.text
     nickname = context.user_data['nickname']
-    con = sqlite3.connect('finance.db')
+    con = sqlite3.connect('db/finance.db')
     cur = con.cursor()
     name = update.message.from_user.username
     cur.execute("UPDATE users SET nickname = ? WHERE username = ?", (nickname, name))
@@ -118,7 +122,7 @@ async def add_one_sum(update, context):
     try:
         if len(str(float(update.message.text)).split('.')[-1]) > 2 or float(update.message.text) <= 0:
             int('придумали тут')
-        con = sqlite3.connect('finance.db')
+        con = sqlite3.connect('db/finance.db')
         cur = con.cursor()
         name = update.message.from_user.username
         usid = cur.execute("""SELECT id FROM users
@@ -186,7 +190,7 @@ async def limsum(update, context):
     try:
         if len(str(float(update.message.text)).split('.')[-1]) > 2 or float(update.message.text) <= 0:
             int('придумали тут')
-        con = sqlite3.connect('finance.db')
+        con = sqlite3.connect('db/finance.db')
         cur = con.cursor()
         name = update.message.from_user.username
         usid = cur.execute("""SELECT id FROM users
@@ -253,4 +257,5 @@ def main():
 
 
 if __name__ == '__main__':
+    db_session.global_init("db/finance.db")
     main()
