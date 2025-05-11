@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fefb362-eb6f-4fe8-98e8-a7a063b8fdeb" name="Changes" comment="хелп и переименовывание">
-      <change afterPath="$PROJECT_DIR$/data/users.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="5fefb362-eb6f-4fe8-98e8-a7a063b8fdeb" name="Changes" comment="добавлена orm модель, реорганизация струткутры проекта">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/finance.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/finance.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/logging.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -38,6 +38,11 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Днс/PycharmProjects/YLproject3TgBot&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Днс\PycharmProjects\YLproject3TgBot\db" />
+    </key>
+  </component>
   <component name="RunManager">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="YLproject3TgBot" />
@@ -110,17 +115,37 @@
       <option name="project" value="LOCAL" />
       <updated>1746896330902</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="добавлена orm модель, реорганизация струткутры проекта">
+      <option name="closed" value="true" />
+      <created>1746963756232</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746963756232</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="UnknownFeatures">
     <option featureType="com.intellij.fileTypeFactory" implementationName="*.log" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="123" />
     <MESSAGE value="с аватракой, описанием и переим категорией" />
     <MESSAGE value="логирование в отдельном файле" />
     <MESSAGE value="хелп и переименовывание" />
-    <option name="LAST_COMMIT_MESSAGE" value="хелп и переименовывание" />
+    <MESSAGE value="добавлена orm модель, реорганизация струткутры проекта" />
+    <option name="LAST_COMMIT_MESSAGE" value="добавлена orm модель, реорганизация струткутры проекта" />
   </component>
 </project>
