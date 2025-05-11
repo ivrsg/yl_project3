@@ -6,6 +6,7 @@ from configs import TOKEN
 import sqlite3
 from flask import Flask
 from data import db_session
+from data.users import User
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', filename='logging.log', level=logging.DEBUG)
@@ -15,42 +16,27 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
 
 
-def nick(name):
-    con = sqlite3.connect('db/finance.db')
-    cur = con.cursor()
-    nickname = cur.execute("""SELECT nickname FROM users
-                        WHERE username=?""", (name,)).fetchone()[0]
-    if not nickname:
-        nickname = name
-    con.close()
-    return nickname
-
-
 async def start(update, context):
-    con = sqlite3.connect('db/finance.db')
-    cur = con.cursor()
+    db_sess = db_session.create_session()
     name = update.message.from_user.username
-    result = cur.execute("""SELECT id FROM users
-                WHERE username=?""", (name,)).fetchall()
-    if not result:
-        # добавляет к бд если новый пользователь
-        cur.execute("""INSERT INTO users(username) VALUES(?)""", (name,))
-        con.commit()
-
+    res = db_sess.query(User).filter(User.username == name).first()
+    if not res:
+        new = User()
+        new.username = name
+        new.nickname = name
+        db_sess.add(new)
+        db_sess.commit()
+    user = db_sess.query(User).filter(User.username == name).first()
     reply_keyboard = [['/add'], ['/lim']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
-    nickname = cur.execute("""SELECT nickname FROM users
-                    WHERE username=?""", (name,)).fetchone()[0]
-    if nickname:
-        context.user_data['nickname'] = nickname
-        name = nickname
-    con.close()
-    await update.message.reply_text(f'Здравствуйте...{name}))', reply_markup=markup)
+    await update.message.reply_text(f'Здравствуйте...{user.nickname}))', reply_markup=markup)
 
 
 async def help(update, context):
+    db_sess = db_session.create_session()
     name = update.message.from_user.username
-    await update.message.reply_text(f'Здравствуйте...{nick(name)}))\n'
+    user = db_sess.query(User).filter(User.username == name).first()
+    await update.message.reply_text(f'Здравствуйте...{user.nickname}))\n'
                                     f'\n'
                                     f'Вот список команд для настройки бота: \n'
                                     f'\n'
@@ -60,30 +46,37 @@ async def help(update, context):
                                     f'/add_category - добавить собственную категорию трат')
 
 
-async def rename(update, context):
+async def clear(update, context):
+    db_sess = db_session.create_session()
+    name = update.message.from_user.username
+    user = db_sess.query(User).filter(User.username == name).first()
+    id = user.id
     con = sqlite3.connect('db/finance.db')
     cur = con.cursor()
+    cur.execute("DELETE FROM expenses WHERE users_id = ?", (id,))
+    con.commit()
+    db_sess.delete(user)
+    db_sess.commit()
+    await update.message.reply_text(f'Теперь мы незнакомы ... ')
+
+
+async def rename(update, context):
     name = update.message.from_user.username
-    result = cur.execute("""SELECT id FROM users
-                    WHERE username=?""", (name,)).fetchall()
-    if not result:
-        cur.execute("""INSERT INTO users(username) VALUES(?)""", (name,))
-        con.commit()
-    con.close()
-    await update.message.reply_text(f'Как к вам обращаться...{name}? ))')
+    db_sess = db_session.create_session()
+    user = db_sess.query(User).filter(User.username == name).first()
+    await update.message.reply_text(f'Как к вам обращаться...{user.nickname}? ))')
     return 1
 
 
 async def set_nickname(update, context):
-    context.user_data['nickname'] = update.message.text
-    nickname = context.user_data['nickname']
-    con = sqlite3.connect('db/finance.db')
-    cur = con.cursor()
     name = update.message.from_user.username
-    cur.execute("UPDATE users SET nickname = ? WHERE username = ?", (nickname, name))
-    con.commit()
-    con.close()
-    await update.message.reply_text(f'Теперь вы для меня {context.user_data["nickname"]}... ))')
+    nickname = update.message.text
+    db_sess = db_session.create_session()
+    user = db_sess.query(User).filter(User.username == name).first()
+    user.nickname = nickname
+    db_sess.commit()
+    await update.message.reply_text(f'Теперь вы для меня {user.nickname}... ))')
+    return ConversationHandler.END
 
 
 async def add(update, context):
@@ -228,6 +221,7 @@ def main():
     application = Application.builder().token(TOKEN).build()
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help))
+    application.add_handler(CommandHandler("clear", clear))
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('add', add)],
         states={
