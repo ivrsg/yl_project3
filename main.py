@@ -50,7 +50,7 @@ async def help(update, context):
                                     f'\n'
                                     f'Вот список команд для настройки бота: \n'
                                     f'\n'
-                                    f'/rename - установите, как  к вам будет обращаться бот.\n'
+                                    f'/rename - установите, как к вам будет обращаться бот.\n'
                                     f'/stop - возвращение в главное меню.\n'
                                     f'/clear - очистить все данные пользователя.\n'
                                     f'/add_category - добавить собственную категорию трат')
@@ -104,15 +104,20 @@ async def add1(update, context):
 
 
 async def add_one(update, context):
-    context.user_data['category'] = update.message.text
-    await update.message.reply_text('Какую сумму вы потратили?\n'
-                                    'Напишите только сумму в рублях в формате "рубли.копейки".',
-                                    reply_markup=ReplyKeyboardRemove())
-    return 4
+    if update.message.text in ['Транспорт', 'Здоровье', 'Кафе/Продукты', 'Развлечения']:
+        context.user_data['category'] = update.message.text
+        await update.message.reply_text('Какую сумму вы потратили?\n'
+                                        'Напишите только сумму в рублях в формате "рубли.копейки".',
+                                        reply_markup=ReplyKeyboardRemove())
+        return 4
+    await update.message.reply_text('Выберите к какой категории она относится.')
+    return 2
 
 
 async def add_one_sum(update, context):
     try:
+        if len(str(float(update.message.text)).split('.')[-1]) > 2 or float(update.message.text) <= 0:
+            int('придумали тут')
         con = sqlite3.connect('finance.db')
         cur = con.cursor()
         name = update.message.from_user.username
@@ -167,15 +172,20 @@ async def lim(update, context):
 
 
 async def limcategor(update, context):
-    context.user_data['category'] = update.message.text
-    await update.message.reply_text('Какой лимит вы хотите установить?\n'
-                                    'Напишите только сумму в рублях в формате "рубли.копейки".',
-                                    reply_markup=ReplyKeyboardRemove())
-    return 2
+    if update.message.text in ['Транспорт', 'Здоровье', 'Кафе/Продукты', 'Развлечения']:
+        context.user_data['category'] = update.message.text
+        await update.message.reply_text('Какой лимит вы хотите установить?\n'
+                                        'Напишите только сумму в рублях в формате "рубли.копейки".',
+                                        reply_markup=ReplyKeyboardRemove())
+        return 2
+    await update.message.reply_text('На какую категорию вы хотите установить лимит?')
+    return 1
 
 
 async def limsum(update, context):
     try:
+        if len(str(float(update.message.text)).split('.')[-1]) > 2 or float(update.message.text) <= 0:
+            int('придумали тут')
         con = sqlite3.connect('finance.db')
         cur = con.cursor()
         name = update.message.from_user.username
