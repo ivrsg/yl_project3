@@ -43,8 +43,7 @@ async def help(update, context):
                                     f'\n'
                                     f'/rename - установите, как к вам будет обращаться бот.\n'
                                     f'/stop - возвращение в главное меню.\n'
-                                    f'/clear - очистить все данные пользователя.\n'
-                                    f'/add_category - добавить собственную категорию трат')
+                                    f'/clear - очистить все данные пользователя.\n')
 
 
 async def clear(update, context):
