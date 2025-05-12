@@ -7,6 +7,7 @@ import sqlite3
 from flask import Flask
 from data import db_session
 from data.users import User
+from data.expenses import Expenses
 from datetime import *
 
 logging.basicConfig(
@@ -88,7 +89,7 @@ async def add(update, context):
 
 
 async def add1(update, context):
-    reply_keyboard = [['Транспорт', 'Здоровье'], ['Кафе/Продукты', 'Развлечения']]
+    reply_keyboard = [['Транспорт', 'Здоровье'], ['Кафе/Продукты', 'Развлечения'], ['Другое']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
     if update.message.text == 'Добавить единоразовую трату':
         await update.message.reply_text('Выберите к какой категории она относится.', reply_markup=markup)
@@ -102,7 +103,7 @@ async def add1(update, context):
 
 
 async def add_one(update, context):
-    if update.message.text in ['Транспорт', 'Здоровье', 'Кафе/Продукты', 'Развлечения']:
+    if update.message.text in ['Транспорт', 'Здоровье', 'Кафе/Продукты', 'Развлечения', 'Другое']:
         context.user_data['category'] = update.message.text
         await update.message.reply_text('Какую сумму вы потратили?\n'
                                         'Напишите только сумму в рублях в формате "рубли.копейки".',
@@ -116,40 +117,40 @@ async def add_one_sum(update, context):
     try:
         if len(str(float(update.message.text)).split('.')[-1]) > 2 or float(update.message.text) <= 0:
             int('придумали тут')
-        con = sqlite3.connect('db/finance.db')
-        cur = con.cursor()
+        db_sess = db_session.create_session()
         name = update.message.from_user.username
-        usid = cur.execute("""SELECT id FROM users
-                        WHERE username=?""", (name,)).fetchall()[0][0]
-        cteg = cur.execute("""SELECT id, sum, lim FROM expenses
-                        WHERE users_id=? and category=?""", (usid, context.user_data['category'])).fetchall()
+        user = db_sess.query(User).filter(User.username == name).first()
+        usid = user.id
+        cteg = db_sess.query(Expenses).filter(Expenses.users_id == usid,
+                                              Expenses.category == context.user_data['category']).first()
         if not cteg:
-            cur.execute("""INSERT INTO expenses(users_id, category, sum, regular) VALUES(?, ?, ?, False)""",
-                        (usid, context.user_data['category'], float(update.message.text)))
+            new = Expenses()
+            new.users_id = usid
+            new.category = context.user_data['category']
+            new.sum = float(update.message.text)
+            db_sess.add(new)
+            db_sess.commit()
             reply_keyboard = [['/add'], ['/lim']]
             markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
             await update.message.reply_text('Готово!\n'
                                             'Если хотите добавить лимит на категорию, напишите /lim.',
                                             reply_markup=markup)
         else:
-            if cteg[0][2] and cteg[0][1] + float(update.message.text) > cteg[0][2]:
+            if cteg.lim and cteg.sum + float(update.message.text) > cteg.lim:
                 reply_keyboard = [['/add'], ['/lim']]
                 markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
                 await update.message.reply_text(
                     f'Мы не можем добавить расход к общей сумме, так как он превышает лимит на'
-                    f' {cteg[0][1] + float(update.message.text) - cteg[0][2]} рублей.\n'
+                    f' {cteg.sum + float(update.message.text) - cteg.lim} рублей.\n'
                     f'Для начала поменяйте его командой /lim.',
                     reply_markup=markup)
             else:
-                cur.execute("""UPDATE expenses
-                SET sum = ?
-                WHERE id = ?""", (cteg[0][1] + float(update.message.text), cteg[0][0]))
+                cteg.sum += float(update.message.text)
                 reply_keyboard = [['/add'], ['/lim']]
                 markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
                 await update.message.reply_text('Готово!',
                                                 reply_markup=markup)
-        con.commit()
-        con.close()
+                db_sess.commit()
         return ConversationHandler.END
     except Exception:
         await update.message.reply_text('Какую сумму вы потратили?\n'
@@ -158,7 +159,7 @@ async def add_one_sum(update, context):
 
 
 async def add_regular(update, context):
-    if update.message.text in ['Транспорт', 'Здоровье', 'Кафе/Продукты', 'Развлечения']:
+    if update.message.text in ['Транспорт', 'Здоровье', 'Кафе/Продукты', 'Развлечения', 'Другое']:
         context.user_data['category'] = update.message.text
         await update.message.reply_text('Когда был/будет первый платеж?\n'
                                         'Напишите только дату и время в формате "гггг-мм-дд чч:мм:сс".',
@@ -191,34 +192,40 @@ async def regular_sum(update, context):
         if (len(str(float(sad[0])).split('.')[-1]) > 2 or float(sad[0]) <= 0
                 or int(sad[1]) <= 0):
             int('придумали тут')
-        con = sqlite3.connect('db/finance.db')
-        cur = con.cursor()
+        db_sess = db_session.create_session()
         name = update.message.from_user.username
-        usid = cur.execute("""SELECT id FROM users
-                        WHERE username=?""", (name,)).fetchall()[0][0]
-        ctegid = cur.execute("""SELECT id FROM expenses
-                        WHERE users_id=? and category=?""", (usid,)).fetchall()
-        if not ctegid:
-            cur.execute(
-                """INSERT INTO expenses(users_id, category, regular, first_regular, period, sum_regular)
-                 VALUES(?, ?, True, ?, ?, ?)""",
-                (usid, context.user_data['category'], context.user_data['dt'], int(sad[1]), float(sad[0])))
+        user = db_sess.query(User).filter(User.username == name).first()
+        usid = user.id
+        cteg = db_sess.query(Expenses).filter(Expenses.users_id == usid,
+                                              Expenses.category == context.user_data['category']).first()
+        if not cteg:
+            new = Expenses()
+            new.users_id = usid
+            new.category = context.user_data['category']
+            new.regular = True
+            new.first_regular = context.user_data['dt']
+            new.period = int(sad[1])
+            new.sum_regular = float(sad[0])
+            db_sess.add(new)
+            db_sess.commit()
         else:
-            cur.execute("""UPDATE expenses
-            SET (regular, first_regular, period, sum_regular) = True, ?, ?, ?
-            WHERE id = ?""", (context.user_data['dt'], int(sad[1]), float(sad[0]), ctegid[0][0]))
+            cteg.regular = True
+            cteg.first_regular = context.user_data['dt']
+            cteg.period = int(sad[1])
+            cteg.sum_regular = float(sad[0])
+            db_sess.commit()
         timer = context.user_data['dt'] - datetime.now() + timedelta(days=(int(sad[1]) - 1))
         while timer.total_seconds() <= 0:
             timer += timedelta(days=(int(sad[1]) - 1))
         chat_id = update.effective_message.chat_id
-        context.job_queue.run_once(task, timer.total_seconds(), chat_id=chat_id, name=context.user_data['category'],
+        remove_job_if_exists(context.user_data['category'] + str(usid), context)
+        context.job_queue.run_once(task, timer.total_seconds(), chat_id=chat_id,
+                                   name=context.user_data['category'] + str(usid),
                                    data=timer.total_seconds())
         reply_keyboard = [['/add'], ['/lim']]
         markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
         await update.message.reply_text('Готово!',
                                         reply_markup=markup)
-        con.commit()
-        con.close()
         return ConversationHandler.END
     except Exception:
         await update.message.reply_text('На какую сумму и с какой периодичностью будут происходить платежи?\n'
@@ -252,7 +259,7 @@ async def unset(update, context):
 
 
 async def lim(update, context):
-    reply_keyboard = [['Транспорт', 'Здоровье'], ['Кафе/Продукты', 'Развлечения']]
+    reply_keyboard = [['Транспорт', 'Здоровье'], ['Кафе/Продукты', 'Развлечения'], ['Другое']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
     await update.message.reply_text('На какую категорию вы хотите установить лимит?',
                                     reply_markup=markup)
@@ -260,7 +267,7 @@ async def lim(update, context):
 
 
 async def limcategor(update, context):
-    if update.message.text in ['Транспорт', 'Здоровье', 'Кафе/Продукты', 'Развлечения']:
+    if update.message.text in ['Транспорт', 'Здоровье', 'Кафе/Продукты', 'Развлечения', 'Другое']:
         context.user_data['category'] = update.message.text
         await update.message.reply_text('Какой лимит вы хотите установить?\n'
                                         'Напишите только сумму в рублях в формате "рубли.копейки".',
@@ -274,26 +281,31 @@ async def limsum(update, context):
     try:
         if len(str(float(update.message.text)).split('.')[-1]) > 2 or float(update.message.text) <= 0:
             int('придумали тут')
-        con = sqlite3.connect('db/finance.db')
-        cur = con.cursor()
+        db_sess = db_session.create_session()
         name = update.message.from_user.username
-        usid = cur.execute("""SELECT id FROM users
-                        WHERE username=?""", (name,)).fetchall()[0][0]
-        cteg = cur.execute("""SELECT id FROM expenses
-                        WHERE users_id=? and category=?""", (usid, context.user_data['category'])).fetchall()
+        user = db_sess.query(User).filter(User.username == name).first()
+        usid = user.id
+        cteg = db_sess.query(Expenses).filter(Expenses.users_id == usid,
+                                              Expenses.category == context.user_data['category']).first()
         if not cteg:
-            cur.execute("""INSERT INTO expenses(users_id, category, lim, regular) VALUES(?, ?, ?, False)""",
-                        (usid, context.user_data['category'], float(update.message.text)))
+            new = Expenses()
+            new.users_id = usid
+            new.category = context.user_data['category']
+            new.lim = float(update.message.text)
+            db_sess.add(new)
+            db_sess.commit()
         else:
-            cur.execute("""UPDATE expenses
-            SET lim = ?
-            WHERE id = ?""", (float(update.message.text), cteg[0][0]))
+            if cteg.sum > float(update.message.text):
+                await update.message.reply_text('Данная сумма больше той, которую вы уже потратили\n'
+                                                'Напишите другую сумму в рублях в формате "рубли.копейки".')
+                return 2
+            else:
+                cteg.lim = float(update.message.text)
+                db_sess.commit()
         reply_keyboard = [['/add'], ['/lim']]
         markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
         await update.message.reply_text('Готово!',
                                         reply_markup=markup)
-        con.commit()
-        con.close()
         return ConversationHandler.END
     except Exception:
         await update.message.reply_text('Какой лимит вы хотите установить?\n'
