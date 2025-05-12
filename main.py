@@ -9,6 +9,7 @@ from data import db_session
 from data.users import User
 from datetime import *
 from make_diagramme import stat_img
+from get_banks import find_bank
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', filename='logging.log', level=logging.DEBUG)
@@ -51,22 +52,25 @@ async def help(update, context):
 
 
 async def get_banks(update, context):
-    db_sess = db_session.create_session()
     name = update.message.from_user.username
+    db_sess = db_session.create_session()
     user = db_sess.query(User).filter(User.username == name).first()
-    id = user.id
-    con = sqlite3.connect('db/finance.db')
-    cur = con.cursor()
-    result = cur.execute(f"""SELECT category, sum FROM expenses
-                        WHERE users_id = {id}""").fetchall()
-    stat_img(result)
+    await update.message.reply_text(f'Введите адрес, рядом с которым хотите узнать расположение банкоматов.\n'
+                                    f'<город> <улица> <дом>')
+    return 1
+
+
+async def ret_banks_img(update, context):
+    address = update.message.text
+    find_bank(address)
     chat_id = update.effective_message.chat_id
-    photo = open('static/img/stat.png', 'rb')
+    photo = open('static/img/map.png', 'rb')
     await context.bot.send_photo(
         chat_id=chat_id,
         photo=photo,
-        caption='Ваши расходы по категориям'
+        caption=f'10 ближайших банков к {address}'
     )
+    return ConversationHandler.END
 
 
 async def get_statistic(update, context):
@@ -379,6 +383,13 @@ def main():
         entry_points=[CommandHandler('rename', rename)],
         states={
             1: [MessageHandler(filters.TEXT & ~filters.COMMAND, set_nickname)]},
+        fallbacks=[CommandHandler('stop', stop)]
+    )
+    application.add_handler(conv_handler)
+    conv_handler = ConversationHandler(
+        entry_points=[CommandHandler('get_banks', get_banks)],
+        states={
+            1: [MessageHandler(filters.TEXT & ~filters.COMMAND, ret_banks_img)]},
         fallbacks=[CommandHandler('stop', stop)]
     )
     application.add_handler(conv_handler)

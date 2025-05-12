@@ -7,29 +7,23 @@ import os
 
 
 def find_bank(toponym_to_find):
-    toponym_to_find = input()
     geocoder_api_server = "http://geocode-maps.yandex.ru/1.x/"
     geocoder_params = {
         "apikey": "8013b162-6b42-4997-9691-77b7074026e0",
         "geocode": toponym_to_find,
         "format": "json"}
     response = requests.get(geocoder_api_server, params=geocoder_params)
-
     if not response:
         pass
-
     json_response = response.json()
     toponym = json_response["response"]["GeoObjectCollection"]["featureMember"][0]["GeoObject"]
     toponym_coodrinates = toponym["Point"]["pos"]
     point = ",".join(toponym_coodrinates.split())
     toponym_longitude, toponym_lattitude = toponym_coodrinates.split(" ")
     apikey = "f3a0fe3a-b07e-4840-a1da-06f18b2ddf13"
-
     search_api_server = "https://search-maps.yandex.ru/v1/"
     api_key = "dda3ddba-c9ea-4ead-9010-f43fbc15c6e3"
-
     address_ll = point
-
     search_params = {
         "apikey": api_key,
         "text": "банкомат",
@@ -37,7 +31,6 @@ def find_bank(toponym_to_find):
         "ll": address_ll,
         "type": "biz"
     }
-
     pharmacy_response = requests.get(search_api_server, params=search_params)
     json_pharmacy_response = pharmacy_response.json()
     if not response:
@@ -76,4 +69,3 @@ def find_bank(toponym_to_find):
     except FileNotFoundError:
         os.mkdir('static/img')
         opened_image.save('static/img/map.png')
-    opened_image.show()
