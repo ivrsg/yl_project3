@@ -8,6 +8,7 @@ from flask import Flask
 from data import db_session
 from data.users import User
 from datetime import *
+from make_diagramme import stat_img
 
 logging.basicConfig(
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', filename='logging.log', level=logging.DEBUG)
@@ -43,7 +44,48 @@ async def help(update, context):
                                     f'\n'
                                     f'/rename - установите, как к вам будет обращаться бот.\n'
                                     f'/stop - возвращение в главное меню.\n'
-                                    f'/clear - очистить все данные пользователя.\n')
+                                    f'/clear - очистить все данные пользователя.\n'
+                                    f'/get_statistic -  получить отчет о тратах по категориям.\n'
+                                    f'/get_banks'
+                                    )
+
+
+async def get_banks(update, context):
+    db_sess = db_session.create_session()
+    name = update.message.from_user.username
+    user = db_sess.query(User).filter(User.username == name).first()
+    id = user.id
+    con = sqlite3.connect('db/finance.db')
+    cur = con.cursor()
+    result = cur.execute(f"""SELECT category, sum FROM expenses
+                        WHERE users_id = {id}""").fetchall()
+    stat_img(result)
+    chat_id = update.effective_message.chat_id
+    photo = open('static/img/stat.png', 'rb')
+    await context.bot.send_photo(
+        chat_id=chat_id,
+        photo=photo,
+        caption='Ваши расходы по категориям'
+    )
+
+
+async def get_statistic(update, context):
+    db_sess = db_session.create_session()
+    name = update.message.from_user.username
+    user = db_sess.query(User).filter(User.username == name).first()
+    id = user.id
+    con = sqlite3.connect('db/finance.db')
+    cur = con.cursor()
+    result = cur.execute(f"""SELECT category, sum FROM expenses
+                    WHERE users_id = {id}""").fetchall()
+    stat_img(result)
+    chat_id = update.effective_message.chat_id
+    photo = open('static/img/stat.png', 'rb')
+    await context.bot.send_photo(
+        chat_id=chat_id,
+        photo=photo,
+        caption='Ваши расходы по категориям'
+    )
 
 
 async def clear(update, context):
@@ -312,6 +354,7 @@ def main():
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help))
     application.add_handler(CommandHandler("clear", clear))
+    application.add_handler(CommandHandler("get_statistic", get_statistic))
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('add', add)],
         states={
