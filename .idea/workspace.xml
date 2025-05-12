@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fefb362-eb6f-4fe8-98e8-a7a063b8fdeb" name="Changes" comment="удалила какй-то файл">
+    <list default="true" id="5fefb362-eb6f-4fe8-98e8-a7a063b8fdeb" name="Changes" comment="функция для диаграммы">
+      <change afterPath="$PROJECT_DIR$/get_banks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/idnfafr" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/finance.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/finance.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/logging.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/make_diagramme.py" beforeDir="false" afterPath="$PROJECT_DIR$/make_diagramme.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/img/stat.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/stat.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +46,7 @@
       <recent name="C:\Users\Днс\PycharmProjects\YLproject3TgBot\db" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="YLproject3TgBot" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -63,9 +68,31 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="make_diagramme" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="YLproject3TgBot" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/make_diagramme.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.make_diagramme" />
       </list>
     </recent_temporary>
   </component>
@@ -129,7 +156,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746970126581</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="удалила какй-то файл">
+      <option name="closed" value="true" />
+      <created>1746971265557</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1746971265557</updated>
+    </task>
+    <task id="LOCAL-00008" summary="функция для диаграммы">
+      <option name="closed" value="true" />
+      <created>1746974977473</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1746974977473</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -154,6 +197,7 @@
     <MESSAGE value="добавлена orm модель, реорганизация струткутры проекта" />
     <MESSAGE value="работа с пользователем через орм модель, очистка данных о пользователе по /clear, устранение ошибок при выходе из диалога /rename" />
     <MESSAGE value="удалила какй-то файл" />
-    <option name="LAST_COMMIT_MESSAGE" value="удалила какй-то файл" />
+    <MESSAGE value="функция для диаграммы" />
+    <option name="LAST_COMMIT_MESSAGE" value="функция для диаграммы" />
   </component>
 </project>
