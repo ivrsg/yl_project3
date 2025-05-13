@@ -1,7 +1,6 @@
 import logging
 from telegram.ext import Application, MessageHandler, filters, CommandHandler, ConversationHandler
 from telegram import ReplyKeyboardMarkup
-from telegram import ReplyKeyboardRemove
 from configs import TOKEN
 import sqlite3
 from flask import Flask
@@ -31,7 +30,7 @@ async def start(update, context):
         db_sess.add(new)
         db_sess.commit()
     user = db_sess.query(User).filter(User.username == name).first()
-    reply_keyboard = [['/add'], ['/lim']]
+    reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
     await update.message.reply_text(f'Здравствуйте...{user.nickname}))', reply_markup=markup)
 
@@ -46,8 +45,11 @@ async def help(update, context):
                                     f'\n'
                                     f'/rename - установите, как к вам будет обращаться бот.\n'
                                     f'/stop - возвращение в главное меню.\n'
+                                    f'/add - добавить данные о платеже.\n'
+                                    f'/lim - установить лимит на траты по категории.\n'
+                                    f'/unset - отменить регулярные платежи в категории.\n'
                                     f'/clear - очистить все данные пользователя.\n'
-                                    f'/get_statistic -  получить отчет о тратах по категориям.\n'
+                                    f'/get_statistic - получить отчет о тратах по категориям.\n'
                                     f'/get_banks'
                                     )
 
@@ -134,7 +136,7 @@ async def add(update, context):
 
 
 async def add1(update, context):
-    reply_keyboard = [['Транспорт', 'Здоровье'], ['Кафе/Продукты', 'Развлечения'], ['Другое']]
+    reply_keyboard = [['Транспорт', 'Здоровье'], ['Кафе/Продукты', 'Развлечения'], ['Другое', '/stop']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
     if update.message.text == 'Добавить единоразовую трату':
         await update.message.reply_text('Выберите к какой категории она относится.', reply_markup=markup)
@@ -149,10 +151,12 @@ async def add1(update, context):
 
 async def add_one(update, context):
     if update.message.text in ['Транспорт', 'Здоровье', 'Кафе/Продукты', 'Развлечения', 'Другое']:
+        reply_keyboard = [['/stop']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
         context.user_data['category'] = update.message.text
         await update.message.reply_text('Какую сумму вы потратили?\n'
                                         'Напишите только сумму в рублях в формате "рубли.копейки".',
-                                        reply_markup=ReplyKeyboardRemove())
+                                        reply_markup=markup)
         return 4
     await update.message.reply_text('Выберите к какой категории она относится.')
     return 2
@@ -175,14 +179,14 @@ async def add_one_sum(update, context):
             new.sum = float(update.message.text)
             db_sess.add(new)
             db_sess.commit()
-            reply_keyboard = [['/add'], ['/lim']]
+            reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
             markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
             await update.message.reply_text('Готово!\n'
                                             'Если хотите добавить лимит на категорию, напишите /lim.',
                                             reply_markup=markup)
         else:
             if cteg.lim and cteg.sum + float(update.message.text) > cteg.lim:
-                reply_keyboard = [['/add'], ['/lim']]
+                reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
                 markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
                 await update.message.reply_text(
                     f'Мы не можем добавить расход к общей сумме, так как он превышает лимит на'
@@ -191,7 +195,7 @@ async def add_one_sum(update, context):
                     reply_markup=markup)
             else:
                 cteg.sum += float(update.message.text)
-                reply_keyboard = [['/add'], ['/lim']]
+                reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
                 markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
                 await update.message.reply_text('Готово!',
                                                 reply_markup=markup)
@@ -205,10 +209,12 @@ async def add_one_sum(update, context):
 
 async def add_regular(update, context):
     if update.message.text in ['Транспорт', 'Здоровье', 'Кафе/Продукты', 'Развлечения', 'Другое']:
+        reply_keyboard = [['/stop']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
         context.user_data['category'] = update.message.text
         await update.message.reply_text('Когда был/будет первый платеж?\n'
                                         'Напишите только дату и время в формате "гггг-мм-дд чч:мм:сс".',
-                                        reply_markup=ReplyKeyboardRemove())
+                                        reply_markup=markup)
         return 5
     await update.message.reply_text('Выберите к какой категории она относится.')
     return 3
@@ -217,10 +223,9 @@ async def add_regular(update, context):
 async def regular_per(update, context):
     try:
         dt = update.message.text.split()
-        dt = datetime.combine(date(dt[0].split('-')[0], dt[0].split('-')[1], dt[0].split('-')[2]),
-                              time(dt[1].split(':')[0], dt[1].split(':')[1], dt[1].split(':')[2]))
+        dt = datetime.combine(date(int(dt[0].split('-')[0]), int(dt[0].split('-')[1]), int(dt[0].split('-')[2])),
+                              time(int(dt[1].split(':')[0]), int(dt[1].split(':')[1]), int(dt[1].split(':')[2])))
         context.user_data['dt'] = dt
-        print(dt)
         await update.message.reply_text('На какую сумму и с какой периодичностью будут происходить платежи?\n'
                                         'Напишите только сумму в рублях и периодичность в днях в формате'
                                         ' "рубли.копейки дни".')
@@ -259,15 +264,15 @@ async def regular_sum(update, context):
             cteg.period = int(sad[1])
             cteg.sum_regular = float(sad[0])
             db_sess.commit()
-        timer = context.user_data['dt'] - datetime.now() + timedelta(days=(int(sad[1]) - 1))
+        timer = context.user_data['dt'] - datetime.now() + timedelta(days=(int(sad[1])))
         while timer.total_seconds() <= 0:
-            timer += timedelta(days=(int(sad[1]) - 1))
+            timer += timedelta(days=(int(sad[1])))
         chat_id = update.effective_message.chat_id
         remove_job_if_exists(context.user_data['category'] + str(usid), context)
         context.job_queue.run_once(task, timer.total_seconds(), chat_id=chat_id,
                                    name=context.user_data['category'] + str(usid),
                                    data=timer.total_seconds())
-        reply_keyboard = [['/add'], ['/lim']]
+        reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
         markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
         await update.message.reply_text('Готово!',
                                         reply_markup=markup)
@@ -280,8 +285,7 @@ async def regular_sum(update, context):
 
 
 async def task(context):
-    await context.bot.send_message(context.job.chat_id, text=f'Через день у вас назначен плановый платеж.'
-                                                             f'если ходите его отменить, вызовите функцию /unset')
+    await context.bot.send_message(context.job.chat_id, text=f'Сегодня у вас назначен плановый платеж, не забудьте;)')
 
 
 def remove_job_if_exists(name, context):
@@ -294,17 +298,46 @@ def remove_job_if_exists(name, context):
 
 
 async def unset(update, context):
-    chat_id = update.message.chat_id
-    job_removed = remove_job_if_exists(context.user_data['category'], context)
-    if job_removed:
-        text = f'Регулярные платежи отменены в категории {context.user_data["category"]}'
-    else:
-        text = 'У вас нет регулярных платежей в этой категории'
-    await update.message.reply_text(text)
+    reply_keyboard = [['Транспорт', 'Здоровье'], ['Кафе/Продукты', 'Развлечения'], ['Другое', '/stop']]
+    markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
+    await update.message.reply_text('К какой категории относится регулярный платеж?',
+                                    reply_markup=markup)
+    return 1
+
+
+async def unsetcateg(update, context):
+    if update.message.text in ['Транспорт', 'Здоровье', 'Кафе/Продукты', 'Развлечения', 'Другое']:
+        db_sess = db_session.create_session()
+        name = update.message.from_user.username
+        user = db_sess.query(User).filter(User.username == name).first()
+        usid = user.id
+        cteg = db_sess.query(Expenses).filter(Expenses.users_id == usid,
+                                              Expenses.category == update.message.text).first()
+        if not cteg.regular:
+            reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
+            markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
+            await update.message.reply_text('У вас нет регулярных платежей в этой категории', reply_markup=markup)
+            return ConversationHandler.END
+        cteg.regular = False
+        cteg.first_regular = None
+        cteg.period = None
+        cteg.sum_regular = None
+        db_sess.commit()
+        job_removed = remove_job_if_exists(update.message.text + str(usid), context)
+        if job_removed:
+            text = f'Регулярные платежи отменены в категории {update.message.text}'
+        else:
+            text = 'У вас нет регулярных платежей в этой категории'
+        reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
+        await update.message.reply_text(text, reply_markup=markup)
+        return ConversationHandler.END
+    await update.message.reply_text('Выберите к какой категории она относится.')
+    return 1
 
 
 async def lim(update, context):
-    reply_keyboard = [['Транспорт', 'Здоровье'], ['Кафе/Продукты', 'Развлечения'], ['Другое']]
+    reply_keyboard = [['Транспорт', 'Здоровье'], ['Кафе/Продукты', 'Развлечения'], ['Другое', '/stop']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
     await update.message.reply_text('На какую категорию вы хотите установить лимит?',
                                     reply_markup=markup)
@@ -313,10 +346,12 @@ async def lim(update, context):
 
 async def limcategor(update, context):
     if update.message.text in ['Транспорт', 'Здоровье', 'Кафе/Продукты', 'Развлечения', 'Другое']:
+        reply_keyboard = [['/stop']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
         context.user_data['category'] = update.message.text
         await update.message.reply_text('Какой лимит вы хотите установить?\n'
                                         'Напишите только сумму в рублях в формате "рубли.копейки".',
-                                        reply_markup=ReplyKeyboardRemove())
+                                        reply_markup=markup)
         return 2
     await update.message.reply_text('На какую категорию вы хотите установить лимит?')
     return 1
@@ -347,7 +382,7 @@ async def limsum(update, context):
             else:
                 cteg.lim = float(update.message.text)
                 db_sess.commit()
-        reply_keyboard = [['/add'], ['/lim']]
+        reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
         markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
         await update.message.reply_text('Готово!',
                                         reply_markup=markup)
@@ -359,7 +394,7 @@ async def limsum(update, context):
 
 
 async def stop(update, context):
-    reply_keyboard = [['/add'], ['/lim']]
+    reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
     await update.message.reply_text("Ну, ладно", reply_markup=markup)
     return ConversationHandler.END
@@ -402,6 +437,13 @@ def main():
         entry_points=[CommandHandler('get_banks', get_banks)],
         states={
             1: [MessageHandler(filters.TEXT & ~filters.COMMAND, ret_banks_img)]},
+        fallbacks=[CommandHandler('stop', stop)]
+    )
+    application.add_handler(conv_handler)
+    conv_handler = ConversationHandler(
+        entry_points=[CommandHandler('unset', unset)],
+        states={
+            1: [MessageHandler(filters.TEXT & ~filters.COMMAND, unsetcateg)]},
         fallbacks=[CommandHandler('stop', stop)]
     )
     application.add_handler(conv_handler)
