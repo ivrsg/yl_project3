@@ -285,7 +285,34 @@ async def regular_sum(update, context):
 
 
 async def task(context):
-    await context.bot.send_message(context.job.chat_id, text=f'Сегодня у вас назначен плановый платеж, не забудьте;)')
+    await context.bot.send_message(context.job.chat_id, text=f'Сегодня у вас назначен плановый платеж, не забудьте;)\n'
+                                                             f'если хотите продолжать получать регулярные платежи, напи'
+                                                             f'шите сегодня команду /repeat и категорию через пробел')
+
+
+async def repeat(update, context):
+    try:
+        db_sess = db_session.create_session()
+        name = update.message.from_user.username
+        user = db_sess.query(User).filter(User.username == name).first()
+        usid = user.id
+        cteg = db_sess.query(Expenses).filter(Expenses.users_id == usid,
+                                              Expenses.category == update.message.text.split()[1]).first()
+        if cteg and not context.job_queue.get_jobs_by_name(update.message.text.split()[1] + str(usid)):
+            timer = cteg.first_regular.date() - datetime.now().date() + timedelta(days=cteg.period)
+            while timer.total_seconds() <= 0:
+                timer += timedelta(days=cteg.period)
+            if timer.days == timedelta(days=cteg.period).days:
+                chat_id = update.effective_message.chat_id
+                remove_job_if_exists(update.message.text.split()[1] + str(usid), context)
+                context.job_queue.run_once(task, timer.total_seconds(), chat_id=chat_id,
+                                           name=update.message.text.split()[1] + str(usid),
+                                           data=timer.total_seconds())
+                await update.message.reply_text('Готово!')
+        else:
+            await update.message.reply_text('У вас нет платежей, требуемых продолжение в этой каегории')
+    except Exception:
+        await update.message.reply_text('Неверный формат')
 
 
 def remove_job_if_exists(name, context):
@@ -406,6 +433,7 @@ def main():
     application.add_handler(CommandHandler("help", help))
     application.add_handler(CommandHandler("clear", clear))
     application.add_handler(CommandHandler("get_statistic", get_statistic))
+    application.add_handler(CommandHandler("repeat", repeat))
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('add', add)],
         states={
