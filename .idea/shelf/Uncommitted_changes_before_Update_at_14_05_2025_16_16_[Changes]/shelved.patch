@@ -1,0 +1,281 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"5fefb362-eb6f-4fe8-98e8-a7a063b8fdeb\" name=\"Changes\" comment=\"функция c банкоматами\">\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Python Script\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2wtv6pCVqMfe1QyAdMUcHNg289T\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;master&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/Днс/PycharmProjects/YLproject3TgBot&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Днс\\PycharmProjects\\YLproject3TgBot\\db\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Python.main\">\r\n    <configuration name=\"main\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"YLproject3TgBot\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/main.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <configuration name=\"make_diagramme\" type=\"PythonConfigurationType\" factoryName=\"Python\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"YLproject3TgBot\" />\r\n      <option name=\"INTERPRETER_OPTIONS\" value=\"\" />\r\n      <option name=\"PARENT_ENVS\" value=\"true\" />\r\n      <envs>\r\n        <env name=\"PYTHONUNBUFFERED\" value=\"1\" />\r\n      </envs>\r\n      <option name=\"SDK_HOME\" value=\"\" />\r\n      <option name=\"WORKING_DIRECTORY\" value=\"$PROJECT_DIR$\" />\r\n      <option name=\"IS_MODULE_SDK\" value=\"true\" />\r\n      <option name=\"ADD_CONTENT_ROOTS\" value=\"true\" />\r\n      <option name=\"ADD_SOURCE_ROOTS\" value=\"true\" />\r\n      <option name=\"SCRIPT_NAME\" value=\"$PROJECT_DIR$/make_diagramme.py\" />\r\n      <option name=\"PARAMETERS\" value=\"\" />\r\n      <option name=\"SHOW_COMMAND_LINE\" value=\"false\" />\r\n      <option name=\"EMULATE_TERMINAL\" value=\"false\" />\r\n      <option name=\"MODULE_MODE\" value=\"false\" />\r\n      <option name=\"REDIRECT_INPUT\" value=\"false\" />\r\n      <option name=\"INPUT_FILE\" value=\"\" />\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Python.main\" />\r\n        <item itemvalue=\"Python.make_diagramme\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"SvnConfiguration\">\r\n    <configuration>C:\\Users\\Днс\\AppData\\Roaming\\Subversion</configuration>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"5fefb362-eb6f-4fe8-98e8-a7a063b8fdeb\" name=\"Changes\" comment=\"\" />\r\n      <created>1746873511407</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1746873511407</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"с аватракой, описанием и переим категорией\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746891034367</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746891034367</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"логирование в отдельном файле\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746891442741</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746891442742</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"логирование в отдельном файле\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746891586743</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746891586743</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"хелп и переименовывание\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746896330902</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746896330902</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"добавлена orm модель, реорганизация струткутры проекта\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746963756232</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746963756232</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"работа с пользователем через орм модель, очистка данных о пользователе по /clear, устранение ошибок при выходе из диалога /rename\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746970126581</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746970126581</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"удалила какй-то файл\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746971265557</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746971265557</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"функция для диаграммы\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1746974977473</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1746974977473</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"функция get_statistic\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747059873515</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747059873515</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"функция c банкоматами\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747066497532</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747066497532</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"функция c банкоматами\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747066546355</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747066546355</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"функция c банкоматами\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1747066833457</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1747066833457</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"13\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"UnknownFeatures\">\r\n    <option featureType=\"com.intellij.fileTypeFactory\" implementationName=\"*.log\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"123\" />\r\n    <MESSAGE value=\"с аватракой, описанием и переим категорией\" />\r\n    <MESSAGE value=\"логирование в отдельном файле\" />\r\n    <MESSAGE value=\"хелп и переименовывание\" />\r\n    <MESSAGE value=\"добавлена orm модель, реорганизация струткутры проекта\" />\r\n    <MESSAGE value=\"работа с пользователем через орм модель, очистка данных о пользователе по /clear, устранение ошибок при выходе из диалога /rename\" />\r\n    <MESSAGE value=\"удалила какй-то файл\" />\r\n    <MESSAGE value=\"функция для диаграммы\" />\r\n    <MESSAGE value=\"функция get_statistic\" />\r\n    <MESSAGE value=\"функция c банкоматами\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"функция c банкоматами\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 0c9eee91be10c7c3833a3836edb7c854fa131a8b)
++++ b/.idea/workspace.xml	(date 1747213191341)
+@@ -6,6 +6,8 @@
+   <component name="ChangeListManager">
+     <list default="true" id="5fefb362-eb6f-4fe8-98e8-a7a063b8fdeb" name="Changes" comment="функция c банкоматами">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/db/finance.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/finance.db" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/logging.log" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -32,7 +34,7 @@
+   &quot;keyToString&quot;: {
+     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Днс/PycharmProjects/YLproject3TgBot&quot;
++    &quot;last_opened_file_path&quot;: &quot;C:/Users/Днс/PycharmProjects/Flask-sqlalchemy&quot;
+   }
+ }</component>
+   <component name="RecentsManager">
+@@ -198,7 +200,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1747066833457</updated>
+     </task>
+-    <option name="localTasksCounter" value="13" />
++    <task id="LOCAL-00013" summary="функция c банкоматами">
++      <option name="closed" value="true" />
++      <created>1747067924540</created>
++      <option name="number" value="00013" />
++      <option name="presentableId" value="LOCAL-00013" />
++      <option name="project" value="LOCAL" />
++      <updated>1747067924540</updated>
++    </task>
++    <option name="localTasksCounter" value="14" />
+     <servers />
+   </component>
+   <component name="UnknownFeatures">
+Index: logging.log
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/logging.log b/logging.log
+--- a/logging.log	(revision 0c9eee91be10c7c3833a3836edb7c854fa131a8b)
++++ b/logging.log	(date 1747120673807)
+@@ -36089,3 +36089,227 @@
+ 2025-05-12 23:38:27,624 - httpcore.connection - DEBUG - close.complete
+ 2025-05-12 23:38:27,624 - telegram.ext.ExtBot - DEBUG - This Bot is already shut down. Returning.
+ 2025-05-12 23:38:27,624 - telegram.ext.Updater - DEBUG - Shut down of Updater complete
++2025-05-12 23:38:59,420 - telegram.ext.ExtBot - DEBUG - Set Bot API URL: https://api.telegram.org/bot7845100574:AAHt0ZK0fIglGBA0PmacwOTovxCft8eOToM
++2025-05-12 23:38:59,421 - telegram.ext.ExtBot - DEBUG - Set Bot API File URL: https://api.telegram.org/file/bot7845100574:AAHt0ZK0fIglGBA0PmacwOTovxCft8eOToM
++2025-05-12 23:38:59,424 - asyncio - DEBUG - Using proactor: IocpProactor
++2025-05-12 23:38:59,426 - telegram.ext - DEBUG - Network Retry Loop (Bootstrap Initialize Application): Starting
++2025-05-12 23:38:59,427 - telegram.ext.ExtBot - DEBUG - Calling Bot API endpoint `getMe` with parameters `{}`
++2025-05-12 23:38:59,437 - httpcore.connection - DEBUG - connect_tcp.started host='api.telegram.org' port=443 local_address=None timeout=5.0 socket_options=None
++2025-05-12 23:38:59,549 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000017975366810>
++2025-05-12 23:38:59,549 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001797531FDD0> server_hostname='api.telegram.org' timeout=5.0
++2025-05-12 23:38:59,651 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x000001797396B1A0>
++2025-05-12 23:38:59,652 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
++2025-05-12 23:38:59,653 - httpcore.http11 - DEBUG - send_request_headers.complete
++2025-05-12 23:38:59,654 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
++2025-05-12 23:38:59,654 - httpcore.http11 - DEBUG - send_request_body.complete
++2025-05-12 23:38:59,654 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
++2025-05-12 23:38:59,745 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Server', b'nginx/1.18.0'), (b'Date', b'Mon, 12 May 2025 16:39:02 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'277'), (b'Connection', b'keep-alive'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Methods', b'GET, POST, OPTIONS'), (b'Access-Control-Expose-Headers', b'Content-Length,Content-Type,Date,Server,Connection')])
++2025-05-12 23:38:59,746 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7845100574:AAHt0ZK0fIglGBA0PmacwOTovxCft8eOToM/getMe "HTTP/1.1 200 OK"
++2025-05-12 23:38:59,746 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
++2025-05-12 23:38:59,747 - httpcore.http11 - DEBUG - receive_response_body.complete
++2025-05-12 23:38:59,747 - httpcore.http11 - DEBUG - response_closed.started
++2025-05-12 23:38:59,747 - httpcore.http11 - DEBUG - response_closed.complete
++2025-05-12 23:38:59,748 - telegram.ext.ExtBot - DEBUG - Call to Bot API endpoint `getMe` finished with return value `{'id': 7845100574, 'is_bot': True, 'first_name': 'your_personal_finansist', 'username': 'finansist_yl_project_bot', 'can_join_groups': True, 'can_read_all_group_messages': False, 'supports_inline_queries': False, 'can_connect_to_business': False, 'has_main_web_app': False}`
++2025-05-12 23:38:59,748 - telegram.ext.ExtBot - DEBUG - This Bot is already initialized.
++2025-05-12 23:38:59,748 - telegram.ext.Updater - DEBUG - Updater started (polling)
++2025-05-12 23:38:59,748 - telegram.ext - DEBUG - Network Retry Loop (Bootstrap delete Webhook): Starting
++2025-05-12 23:38:59,749 - telegram.ext.Updater - DEBUG - Deleting webhook
++2025-05-12 23:38:59,749 - telegram.ext.ExtBot - DEBUG - Calling Bot API endpoint `deleteWebhook` with parameters `{}`
++2025-05-12 23:38:59,750 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
++2025-05-12 23:38:59,751 - httpcore.http11 - DEBUG - send_request_headers.complete
++2025-05-12 23:38:59,751 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
++2025-05-12 23:38:59,751 - httpcore.http11 - DEBUG - send_request_body.complete
++2025-05-12 23:38:59,751 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
++2025-05-12 23:38:59,839 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Server', b'nginx/1.18.0'), (b'Date', b'Mon, 12 May 2025 16:39:02 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'68'), (b'Connection', b'keep-alive'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Methods', b'GET, POST, OPTIONS'), (b'Access-Control-Expose-Headers', b'Content-Length,Content-Type,Date,Server,Connection')])
++2025-05-12 23:38:59,840 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7845100574:AAHt0ZK0fIglGBA0PmacwOTovxCft8eOToM/deleteWebhook "HTTP/1.1 200 OK"
++2025-05-12 23:38:59,840 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
++2025-05-12 23:38:59,840 - httpcore.http11 - DEBUG - receive_response_body.complete
++2025-05-12 23:38:59,841 - httpcore.http11 - DEBUG - response_closed.started
++2025-05-12 23:38:59,841 - httpcore.http11 - DEBUG - response_closed.complete
++2025-05-12 23:38:59,841 - telegram.ext.ExtBot - DEBUG - Call to Bot API endpoint `deleteWebhook` finished with return value `True`
++2025-05-12 23:38:59,841 - telegram.ext.Updater - DEBUG - Bootstrap done
++2025-05-12 23:38:59,841 - telegram.ext.Updater - DEBUG - Waiting for polling to start
++2025-05-12 23:38:59,842 - telegram.ext.Updater - DEBUG - Polling updates from Telegram started
++2025-05-12 23:38:59,842 - telegram.ext - DEBUG - Network Retry Loop (Polling Updates): Starting
++2025-05-12 23:38:59,842 - telegram.ext.ExtBot - DEBUG - Calling Bot API endpoint `getUpdates` with parameters `{'timeout': 10, 'offset': 0}`
++2025-05-12 23:38:59,843 - telegram.ext.Application - INFO - Application started
++2025-05-12 23:38:59,844 - httpcore.connection - DEBUG - connect_tcp.started host='api.telegram.org' port=443 local_address=None timeout=5.0 socket_options=None
++2025-05-12 23:38:59,940 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x00000179753D9160>
++2025-05-12 23:38:59,940 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001797531F9D0> server_hostname='api.telegram.org' timeout=5.0
++2025-05-12 23:39:00,047 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000017975365D60>
++2025-05-12 23:39:00,047 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
++2025-05-12 23:39:00,048 - httpcore.http11 - DEBUG - send_request_headers.complete
++2025-05-12 23:39:00,048 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
++2025-05-12 23:39:00,049 - httpcore.http11 - DEBUG - send_request_body.complete
++2025-05-12 23:39:00,049 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
++2025-05-12 23:39:01,347 - telegram.ext.Application - DEBUG - Application received stop signal. Shutting down.
++2025-05-12 23:39:01,348 - telegram.ext.Updater - DEBUG - Stopping Updater
++2025-05-12 23:39:01,348 - telegram.ext.Updater - DEBUG - Waiting background polling task to finish up.
++2025-05-12 23:39:01,348 - telegram.ext - DEBUG - Network Retry Loop (Polling Updates): Cancelled
++2025-05-12 23:39:01,349 - httpcore.http11 - DEBUG - receive_response_headers.failed exception=CancelledError()
++2025-05-12 23:39:01,349 - httpcore.http11 - DEBUG - response_closed.started
++2025-05-12 23:39:01,349 - telegram.ext.Updater - DEBUG - Calling `get_updates` one more time to mark all fetched updates as read.
++2025-05-12 23:39:01,349 - telegram.ext.ExtBot - DEBUG - Calling Bot API endpoint `getUpdates` with parameters `{'timeout': 0, 'offset': 0}`
++2025-05-12 23:39:01,351 - httpcore.http11 - DEBUG - response_closed.complete
++2025-05-12 23:39:01,352 - httpcore.connection - DEBUG - connect_tcp.started host='api.telegram.org' port=443 local_address=None timeout=5.0 socket_options=None
++2025-05-12 23:39:01,450 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000017975365DC0>
++2025-05-12 23:39:01,450 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x000001797531F9D0> server_hostname='api.telegram.org' timeout=5.0
++2025-05-12 23:39:01,554 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x0000017973B47B90>
++2025-05-12 23:39:01,555 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
++2025-05-12 23:39:01,556 - httpcore.http11 - DEBUG - send_request_headers.complete
++2025-05-12 23:39:01,556 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
++2025-05-12 23:39:01,556 - httpcore.http11 - DEBUG - send_request_body.complete
++2025-05-12 23:39:01,556 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
++2025-05-12 23:39:04,652 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Server', b'nginx/1.18.0'), (b'Date', b'Mon, 12 May 2025 16:39:07 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'23'), (b'Connection', b'keep-alive'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Methods', b'GET, POST, OPTIONS'), (b'Access-Control-Expose-Headers', b'Content-Length,Content-Type,Date,Server,Connection')])
++2025-05-12 23:39:04,653 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7845100574:AAHt0ZK0fIglGBA0PmacwOTovxCft8eOToM/getUpdates "HTTP/1.1 200 OK"
++2025-05-12 23:39:04,654 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
++2025-05-12 23:39:04,654 - httpcore.http11 - DEBUG - receive_response_body.complete
++2025-05-12 23:39:04,654 - httpcore.http11 - DEBUG - response_closed.started
++2025-05-12 23:39:04,655 - httpcore.http11 - DEBUG - response_closed.complete
++2025-05-12 23:39:04,655 - telegram.ext.ExtBot - DEBUG - Call to Bot API endpoint `getUpdates` finished with return value `[]`
++2025-05-12 23:39:04,655 - telegram.ext.ExtBot - DEBUG - No new updates found.
++2025-05-12 23:39:04,655 - telegram.ext.Updater - DEBUG - Updater.stop() is complete
++2025-05-12 23:39:04,655 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
++2025-05-12 23:39:04,656 - telegram.ext.Application - DEBUG - Waiting for update_queue to join
++2025-05-12 23:39:04,656 - telegram.ext.Application - DEBUG - Application stopped fetching of updates.
++2025-05-12 23:39:04,656 - telegram.ext.Application - DEBUG - Waiting for `create_task` calls to be processed
++2025-05-12 23:39:04,656 - telegram.ext.Application - INFO - Application.stop() complete
++2025-05-12 23:39:04,656 - httpcore.connection - DEBUG - close.started
++2025-05-12 23:39:04,657 - httpcore.connection - DEBUG - close.started
++2025-05-12 23:39:04,657 - httpcore.connection - DEBUG - close.complete
++2025-05-12 23:39:04,657 - httpcore.connection - DEBUG - close.complete
++2025-05-12 23:39:04,658 - telegram.ext.ExtBot - DEBUG - This Bot is already shut down. Returning.
++2025-05-12 23:39:04,658 - telegram.ext.Updater - DEBUG - Shut down of Updater complete
++2025-05-13 14:17:34,194 - telegram.ext.ExtBot - DEBUG - Set Bot API URL: https://api.telegram.org/bot7845100574:AAHt0ZK0fIglGBA0PmacwOTovxCft8eOToM
++2025-05-13 14:17:34,196 - telegram.ext.ExtBot - DEBUG - Set Bot API File URL: https://api.telegram.org/file/bot7845100574:AAHt0ZK0fIglGBA0PmacwOTovxCft8eOToM
++2025-05-13 14:17:34,198 - asyncio - DEBUG - Using proactor: IocpProactor
++2025-05-13 14:17:34,200 - telegram.ext - DEBUG - Network Retry Loop (Bootstrap Initialize Application): Starting
++2025-05-13 14:17:34,200 - telegram.ext.ExtBot - DEBUG - Calling Bot API endpoint `getMe` with parameters `{}`
++2025-05-13 14:17:34,208 - httpcore.connection - DEBUG - connect_tcp.started host='api.telegram.org' port=443 local_address=None timeout=5.0 socket_options=None
++2025-05-13 14:17:34,315 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x00000202DD0C6780>
++2025-05-13 14:17:34,315 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x00000202DD083DD0> server_hostname='api.telegram.org' timeout=5.0
++2025-05-13 14:17:34,420 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x00000202DBB63C50>
++2025-05-13 14:17:34,421 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
++2025-05-13 14:17:34,421 - httpcore.http11 - DEBUG - send_request_headers.complete
++2025-05-13 14:17:34,421 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
++2025-05-13 14:17:34,421 - httpcore.http11 - DEBUG - send_request_body.complete
++2025-05-13 14:17:34,421 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
++2025-05-13 14:17:34,513 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Server', b'nginx/1.18.0'), (b'Date', b'Tue, 13 May 2025 07:17:36 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'277'), (b'Connection', b'keep-alive'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Methods', b'GET, POST, OPTIONS'), (b'Access-Control-Expose-Headers', b'Content-Length,Content-Type,Date,Server,Connection')])
++2025-05-13 14:17:34,514 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7845100574:AAHt0ZK0fIglGBA0PmacwOTovxCft8eOToM/getMe "HTTP/1.1 200 OK"
++2025-05-13 14:17:34,514 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
++2025-05-13 14:17:34,514 - httpcore.http11 - DEBUG - receive_response_body.complete
++2025-05-13 14:17:34,514 - httpcore.http11 - DEBUG - response_closed.started
++2025-05-13 14:17:34,514 - httpcore.http11 - DEBUG - response_closed.complete
++2025-05-13 14:17:34,515 - telegram.ext.ExtBot - DEBUG - Call to Bot API endpoint `getMe` finished with return value `{'id': 7845100574, 'is_bot': True, 'first_name': 'your_personal_finansist', 'username': 'finansist_yl_project_bot', 'can_join_groups': True, 'can_read_all_group_messages': False, 'supports_inline_queries': False, 'can_connect_to_business': False, 'has_main_web_app': False}`
++2025-05-13 14:17:34,515 - telegram.ext.ExtBot - DEBUG - This Bot is already initialized.
++2025-05-13 14:17:34,515 - telegram.ext.Updater - DEBUG - Updater started (polling)
++2025-05-13 14:17:34,515 - telegram.ext - DEBUG - Network Retry Loop (Bootstrap delete Webhook): Starting
++2025-05-13 14:17:34,515 - telegram.ext.Updater - DEBUG - Deleting webhook
++2025-05-13 14:17:34,515 - telegram.ext.ExtBot - DEBUG - Calling Bot API endpoint `deleteWebhook` with parameters `{}`
++2025-05-13 14:17:34,516 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
++2025-05-13 14:17:34,516 - httpcore.http11 - DEBUG - send_request_headers.complete
++2025-05-13 14:17:34,516 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
++2025-05-13 14:17:34,516 - httpcore.http11 - DEBUG - send_request_body.complete
++2025-05-13 14:17:34,516 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
++2025-05-13 14:17:34,622 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Server', b'nginx/1.18.0'), (b'Date', b'Tue, 13 May 2025 07:17:36 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'68'), (b'Connection', b'keep-alive'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Methods', b'GET, POST, OPTIONS'), (b'Access-Control-Expose-Headers', b'Content-Length,Content-Type,Date,Server,Connection')])
++2025-05-13 14:17:34,622 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7845100574:AAHt0ZK0fIglGBA0PmacwOTovxCft8eOToM/deleteWebhook "HTTP/1.1 200 OK"
++2025-05-13 14:17:34,622 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
++2025-05-13 14:17:34,623 - httpcore.http11 - DEBUG - receive_response_body.complete
++2025-05-13 14:17:34,623 - httpcore.http11 - DEBUG - response_closed.started
++2025-05-13 14:17:34,623 - httpcore.http11 - DEBUG - response_closed.complete
++2025-05-13 14:17:34,623 - telegram.ext.ExtBot - DEBUG - Call to Bot API endpoint `deleteWebhook` finished with return value `True`
++2025-05-13 14:17:34,623 - telegram.ext.Updater - DEBUG - Bootstrap done
++2025-05-13 14:17:34,623 - telegram.ext.Updater - DEBUG - Waiting for polling to start
++2025-05-13 14:17:34,623 - telegram.ext.Updater - DEBUG - Polling updates from Telegram started
++2025-05-13 14:17:34,623 - telegram.ext - DEBUG - Network Retry Loop (Polling Updates): Starting
++2025-05-13 14:17:34,623 - telegram.ext.ExtBot - DEBUG - Calling Bot API endpoint `getUpdates` with parameters `{'timeout': 10, 'offset': 0}`
++2025-05-13 14:17:34,624 - telegram.ext.Application - INFO - Application started
++2025-05-13 14:17:34,624 - httpcore.connection - DEBUG - connect_tcp.started host='api.telegram.org' port=443 local_address=None timeout=5.0 socket_options=None
++2025-05-13 14:17:34,718 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x00000202DD13CE90>
++2025-05-13 14:17:34,718 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x00000202DD0839D0> server_hostname='api.telegram.org' timeout=5.0
++2025-05-13 14:17:34,820 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x00000202DD0C5CD0>
++2025-05-13 14:17:34,820 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
++2025-05-13 14:17:34,837 - httpcore.http11 - DEBUG - send_request_headers.complete
++2025-05-13 14:17:34,837 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
++2025-05-13 14:17:34,837 - httpcore.http11 - DEBUG - send_request_body.complete
++2025-05-13 14:17:34,837 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
++2025-05-13 14:17:34,971 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Server', b'nginx/1.18.0'), (b'Date', b'Tue, 13 May 2025 07:17:37 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'380'), (b'Connection', b'keep-alive'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Methods', b'GET, POST, OPTIONS'), (b'Access-Control-Expose-Headers', b'Content-Length,Content-Type,Date,Server,Connection')])
++2025-05-13 14:17:34,971 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7845100574:AAHt0ZK0fIglGBA0PmacwOTovxCft8eOToM/getUpdates "HTTP/1.1 200 OK"
++2025-05-13 14:17:34,971 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
++2025-05-13 14:17:34,971 - httpcore.http11 - DEBUG - receive_response_body.complete
++2025-05-13 14:17:34,971 - httpcore.http11 - DEBUG - response_closed.started
++2025-05-13 14:17:34,971 - httpcore.http11 - DEBUG - response_closed.complete
++2025-05-13 14:17:34,972 - telegram.ext.ExtBot - DEBUG - Call to Bot API endpoint `getUpdates` finished with return value `[{'update_id': 776008846, 'message': {'message_id': 1015, 'from': {'id': 2128975160, 'is_bot': False, 'first_name': 'D', 'last_name': 'R', 'username': 'idnfafr', 'language_code': 'ru'}, 'chat': {'id': 2128975160, 'first_name': 'D', 'last_name': 'R', 'username': 'idnfafr', 'type': 'private'}, 'date': 1747120606, 'text': '/start', 'entities': [{'offset': 0, 'length': 6, 'type': 'bot_command'}]}}]`
++2025-05-13 14:17:34,972 - telegram.ext.ExtBot - DEBUG - Getting updates: [776008846]
++2025-05-13 14:17:34,972 - telegram.ext.Application - DEBUG - Processing update Update(message=Message(channel_chat_created=False, chat=Chat(first_name='D', id=2128975160, last_name='R', type=<ChatType.PRIVATE>, username='idnfafr'), date=datetime.datetime(2025, 5, 13, 7, 16, 46, tzinfo=datetime.timezone.utc), delete_chat_photo=False, entities=(MessageEntity(length=6, offset=0, type=<MessageEntityType.BOT_COMMAND>),), from_user=User(first_name='D', id=2128975160, is_bot=False, language_code='ru', last_name='R', username='idnfafr'), group_chat_created=False, message_id=1015, supergroup_chat_created=False, text='/start'), update_id=776008846)
++2025-05-13 14:17:34,986 - telegram.ext.ExtBot - DEBUG - Calling Bot API endpoint `sendMessage` with parameters `{'chat_id': 2128975160, 'text': '������������...idnfafr))', 'reply_markup': ReplyKeyboardMarkup(keyboard=((KeyboardButton(text='/add'),), (KeyboardButton(text='/lim'),)), one_time_keyboard=False)}`
++2025-05-13 14:17:34,987 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
++2025-05-13 14:17:34,988 - telegram.ext.ExtBot - DEBUG - Calling Bot API endpoint `getUpdates` with parameters `{'timeout': 10, 'offset': 776008847}`
++2025-05-13 14:17:34,988 - httpcore.http11 - DEBUG - send_request_headers.complete
++2025-05-13 14:17:34,988 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
++2025-05-13 14:17:34,988 - httpcore.http11 - DEBUG - send_request_body.complete
++2025-05-13 14:17:34,988 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
++2025-05-13 14:17:34,989 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
++2025-05-13 14:17:34,989 - httpcore.http11 - DEBUG - send_request_headers.complete
++2025-05-13 14:17:34,989 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
++2025-05-13 14:17:34,989 - httpcore.http11 - DEBUG - send_request_body.complete
++2025-05-13 14:17:34,989 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
++2025-05-13 14:17:35,117 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Server', b'nginx/1.18.0'), (b'Date', b'Tue, 13 May 2025 07:17:37 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'364'), (b'Connection', b'keep-alive'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Methods', b'GET, POST, OPTIONS'), (b'Access-Control-Expose-Headers', b'Content-Length,Content-Type,Date,Server,Connection')])
++2025-05-13 14:17:35,118 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7845100574:AAHt0ZK0fIglGBA0PmacwOTovxCft8eOToM/sendMessage "HTTP/1.1 200 OK"
++2025-05-13 14:17:35,118 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
++2025-05-13 14:17:35,118 - httpcore.http11 - DEBUG - receive_response_body.complete
++2025-05-13 14:17:35,118 - httpcore.http11 - DEBUG - response_closed.started
++2025-05-13 14:17:35,118 - httpcore.http11 - DEBUG - response_closed.complete
++2025-05-13 14:17:35,119 - telegram.ext.ExtBot - DEBUG - Call to Bot API endpoint `sendMessage` finished with return value `{'message_id': 1016, 'from': {'id': 7845100574, 'is_bot': True, 'first_name': 'your_personal_finansist', 'username': 'finansist_yl_project_bot'}, 'chat': {'id': 2128975160, 'first_name': 'D', 'last_name': 'R', 'username': 'idnfafr', 'type': 'private'}, 'date': 1747120657, 'text': '������������...idnfafr))'}`
++2025-05-13 14:17:45,087 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Server', b'nginx/1.18.0'), (b'Date', b'Tue, 13 May 2025 07:17:47 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'23'), (b'Connection', b'keep-alive'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Methods', b'GET, POST, OPTIONS'), (b'Access-Control-Expose-Headers', b'Content-Length,Content-Type,Date,Server,Connection')])
++2025-05-13 14:17:45,087 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7845100574:AAHt0ZK0fIglGBA0PmacwOTovxCft8eOToM/getUpdates "HTTP/1.1 200 OK"
++2025-05-13 14:17:45,088 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
++2025-05-13 14:17:45,088 - httpcore.http11 - DEBUG - receive_response_body.complete
++2025-05-13 14:17:45,088 - httpcore.http11 - DEBUG - response_closed.started
++2025-05-13 14:17:45,088 - httpcore.http11 - DEBUG - response_closed.complete
++2025-05-13 14:17:45,089 - telegram.ext.ExtBot - DEBUG - Call to Bot API endpoint `getUpdates` finished with return value `[]`
++2025-05-13 14:17:45,089 - telegram.ext.ExtBot - DEBUG - No new updates found.
++2025-05-13 14:17:45,089 - telegram.ext.ExtBot - DEBUG - Calling Bot API endpoint `getUpdates` with parameters `{'timeout': 10, 'offset': 776008847}`
++2025-05-13 14:17:45,090 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
++2025-05-13 14:17:45,090 - httpcore.http11 - DEBUG - send_request_headers.complete
++2025-05-13 14:17:45,091 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
++2025-05-13 14:17:45,091 - httpcore.http11 - DEBUG - send_request_body.complete
++2025-05-13 14:17:45,091 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
++2025-05-13 14:17:53,457 - telegram.ext.Application - DEBUG - Application received stop signal. Shutting down.
++2025-05-13 14:17:53,457 - telegram.ext.Updater - DEBUG - Stopping Updater
++2025-05-13 14:17:53,457 - telegram.ext.Updater - DEBUG - Waiting background polling task to finish up.
++2025-05-13 14:17:53,457 - telegram.ext - DEBUG - Network Retry Loop (Polling Updates): Cancelled
++2025-05-13 14:17:53,458 - httpcore.http11 - DEBUG - receive_response_headers.failed exception=CancelledError()
++2025-05-13 14:17:53,459 - httpcore.http11 - DEBUG - response_closed.started
++2025-05-13 14:17:53,459 - telegram.ext.Updater - DEBUG - Calling `get_updates` one more time to mark all fetched updates as read.
++2025-05-13 14:17:53,459 - telegram.ext.ExtBot - DEBUG - Calling Bot API endpoint `getUpdates` with parameters `{'timeout': 0, 'offset': 776008847}`
++2025-05-13 14:17:53,460 - httpcore.http11 - DEBUG - response_closed.complete
++2025-05-13 14:17:53,461 - httpcore.connection - DEBUG - connect_tcp.started host='api.telegram.org' port=443 local_address=None timeout=5.0 socket_options=None
++2025-05-13 14:17:53,560 - httpcore.connection - DEBUG - connect_tcp.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x00000202DD0C5C40>
++2025-05-13 14:17:53,561 - httpcore.connection - DEBUG - start_tls.started ssl_context=<ssl.SSLContext object at 0x00000202DD0839D0> server_hostname='api.telegram.org' timeout=5.0
++2025-05-13 14:17:53,669 - httpcore.connection - DEBUG - start_tls.complete return_value=<httpcore._backends.anyio.AnyIOStream object at 0x00000202DB1BDB20>
++2025-05-13 14:17:53,670 - httpcore.http11 - DEBUG - send_request_headers.started request=<Request [b'POST']>
++2025-05-13 14:17:53,671 - httpcore.http11 - DEBUG - send_request_headers.complete
++2025-05-13 14:17:53,671 - httpcore.http11 - DEBUG - send_request_body.started request=<Request [b'POST']>
++2025-05-13 14:17:53,672 - httpcore.http11 - DEBUG - send_request_body.complete
++2025-05-13 14:17:53,672 - httpcore.http11 - DEBUG - receive_response_headers.started request=<Request [b'POST']>
++2025-05-13 14:17:53,801 - httpcore.http11 - DEBUG - receive_response_headers.complete return_value=(b'HTTP/1.1', 200, b'OK', [(b'Server', b'nginx/1.18.0'), (b'Date', b'Tue, 13 May 2025 07:17:56 GMT'), (b'Content-Type', b'application/json'), (b'Content-Length', b'23'), (b'Connection', b'keep-alive'), (b'Strict-Transport-Security', b'max-age=31536000; includeSubDomains; preload'), (b'Access-Control-Allow-Origin', b'*'), (b'Access-Control-Allow-Methods', b'GET, POST, OPTIONS'), (b'Access-Control-Expose-Headers', b'Content-Length,Content-Type,Date,Server,Connection')])
++2025-05-13 14:17:53,802 - httpx - INFO - HTTP Request: POST https://api.telegram.org/bot7845100574:AAHt0ZK0fIglGBA0PmacwOTovxCft8eOToM/getUpdates "HTTP/1.1 200 OK"
++2025-05-13 14:17:53,802 - httpcore.http11 - DEBUG - receive_response_body.started request=<Request [b'POST']>
++2025-05-13 14:17:53,802 - httpcore.http11 - DEBUG - receive_response_body.complete
++2025-05-13 14:17:53,803 - httpcore.http11 - DEBUG - response_closed.started
++2025-05-13 14:17:53,803 - httpcore.http11 - DEBUG - response_closed.complete
++2025-05-13 14:17:53,803 - telegram.ext.ExtBot - DEBUG - Call to Bot API endpoint `getUpdates` finished with return value `[]`
++2025-05-13 14:17:53,803 - telegram.ext.ExtBot - DEBUG - No new updates found.
++2025-05-13 14:17:53,803 - telegram.ext.Updater - DEBUG - Updater.stop() is complete
++2025-05-13 14:17:53,804 - telegram.ext.Application - INFO - Application is stopping. This might take a moment.
++2025-05-13 14:17:53,804 - telegram.ext.Application - DEBUG - Waiting for update_queue to join
++2025-05-13 14:17:53,804 - telegram.ext.Application - DEBUG - Application stopped fetching of updates.
++2025-05-13 14:17:53,804 - telegram.ext.Application - DEBUG - Waiting for `create_task` calls to be processed
++2025-05-13 14:17:53,805 - telegram.ext.Application - INFO - Application.stop() complete
++2025-05-13 14:17:53,805 - httpcore.connection - DEBUG - close.started
++2025-05-13 14:17:53,805 - httpcore.connection - DEBUG - close.started
++2025-05-13 14:17:53,806 - httpcore.connection - DEBUG - close.complete
++2025-05-13 14:17:53,806 - httpcore.connection - DEBUG - close.complete
++2025-05-13 14:17:53,806 - telegram.ext.ExtBot - DEBUG - This Bot is already shut down. Returning.
++2025-05-13 14:17:53,806 - telegram.ext.Updater - DEBUG - Shut down of Updater complete

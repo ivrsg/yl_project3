@@ -32,26 +32,27 @@ async def start(update, context):
     user = db_sess.query(User).filter(User.username == name).first()
     reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
-    await update.message.reply_text(f'Здравствуйте...{user.nickname}))', reply_markup=markup)
+    await update.message.reply_text(f'Здравствуйте, {user.nickname}\n'
+                                    f'с помощью /help вы можете узнать мой функционал', reply_markup=markup)
 
 
 async def help(update, context):
     db_sess = db_session.create_session()
     name = update.message.from_user.username
     user = db_sess.query(User).filter(User.username == name).first()
-    await update.message.reply_text(f'Здравствуйте...{user.nickname}))\n'
-                                    f'\n'
-                                    f'Вот список команд для настройки бота: \n'
-                                    f'\n'
-                                    f'/rename - установите, как к вам будет обращаться бот.\n'
-                                    f'/stop - возвращение в главное меню.\n'
-                                    f'/add - добавить данные о платеже.\n'
-                                    f'/lim - установить лимит на траты по категории.\n'
-                                    f'/unset - отменить регулярные платежи в категории.\n'
-                                    f'/clear - очистить все данные пользователя.\n'
-                                    f'/get_statistic - получить отчет о тратах по категориям.\n'
-                                    f'/get_banks'
-                                    )
+    await update.message.reply_text(
+        f'\n'
+        f'Вот список команд для работы с ботом: \n'
+        f'\n'
+        f'/rename - установите, как к вам будет обращаться бот.\n'
+        f'/stop - возвращение в главное меню.\n'
+        f'/add - добавить данные о платеже.\n'
+        f'/lim - установить лимит на траты по категории.\n'
+        f'/unset - отменить регулярные платежи в категории.\n'
+        f'/clear - очистить все данные пользователя.\n'
+        f'/get_statistic - получить отчет о тратах по категориям.\n'
+        f'/get_banks - получить карту с 10 ближайшими к введенному месту банкоматами.'
+    )
 
 
 async def get_banks(update, context):
@@ -71,7 +72,7 @@ async def ret_banks_img(update, context):
     await context.bot.send_photo(
         chat_id=chat_id,
         photo=photo,
-        caption=f'10 ближайших банков к {address}'
+        caption=f'10 ближайших банкоматов к {address}'
     )
     return ConversationHandler.END
 
@@ -106,14 +107,14 @@ async def clear(update, context):
     con.commit()
     db_sess.delete(user)
     db_sess.commit()
-    await update.message.reply_text(f'Теперь мы незнакомы ... ')
+    await update.message.reply_text(f'Теперь мы незнакомы :(')
 
 
 async def rename(update, context):
     name = update.message.from_user.username
     db_sess = db_session.create_session()
     user = db_sess.query(User).filter(User.username == name).first()
-    await update.message.reply_text(f'Как к вам обращаться...{user.nickname}? ))')
+    await update.message.reply_text(f'Как к вам обращаться, {user.nickname}?')
     return 1
 
 
@@ -124,7 +125,7 @@ async def set_nickname(update, context):
     user = db_sess.query(User).filter(User.username == name).first()
     user.nickname = nickname
     db_sess.commit()
-    await update.message.reply_text(f'Теперь вы для меня {user.nickname}... ))')
+    await update.message.reply_text(f'Теперь вы для меня {user.nickname}! :)')
     return ConversationHandler.END
 
 
@@ -310,7 +311,7 @@ async def repeat(update, context):
                                            data=timer.total_seconds())
                 await update.message.reply_text('Готово!')
         else:
-            await update.message.reply_text('У вас нет платежей, требуемых продолжение в этой каегории')
+            await update.message.reply_text('У вас нет платежей, требуемых продолжение в этой категории')
     except Exception:
         await update.message.reply_text('Неверный формат')
 
