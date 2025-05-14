@@ -81,19 +81,25 @@ async def get_statistic(update, context):
     db_sess = db_session.create_session()
     name = update.message.from_user.username
     user = db_sess.query(User).filter(User.username == name).first()
-    id = user.id
-    con = sqlite3.connect('db/finance.db')
-    cur = con.cursor()
-    result = cur.execute(f"""SELECT category, sum FROM expenses
-                    WHERE users_id = {id}""").fetchall()
-    stat_img(result)
-    chat_id = update.effective_message.chat_id
-    photo = open('static/img/stat.png', 'rb')
-    await context.bot.send_photo(
-        chat_id=chat_id,
-        photo=photo,
-        caption='Ваши расходы по категориям'
-    )
+    if not user:
+        reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
+        await update.message.reply_text('По-видимому, мы еще не знакомы, давайте познакомимся командой /start',
+                                        reply_markup=markup)
+    else:
+        id = user.id
+        con = sqlite3.connect('db/finance.db')
+        cur = con.cursor()
+        result = cur.execute(f"""SELECT category, sum FROM expenses
+                        WHERE users_id = {id}""").fetchall()
+        stat_img(result)
+        chat_id = update.effective_message.chat_id
+        photo = open('static/img/stat.png', 'rb')
+        await context.bot.send_photo(
+            chat_id=chat_id,
+            photo=photo,
+            caption='Ваши расходы по категориям'
+        )
 
 
 async def clear(update, context):
@@ -130,7 +136,16 @@ async def set_nickname(update, context):
 
 
 async def add(update, context):
-    reply_keyboard = [['Добавить единоразовую трату'], ['Добавить регулярную трату']]
+    db_sess = db_session.create_session()
+    name = update.message.from_user.username
+    user = db_sess.query(User).filter(User.username == name).first()
+    if not user:
+        reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
+        await update.message.reply_text('По-видимому, мы еще не знакомы, давайте познакомимся командой /start',
+                                        reply_markup=markup)
+        return ConversationHandler.END
+    reply_keyboard = [['Добавить единоразовую трату'], ['Добавить регулярную трату'], ['/stop']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
     await update.message.reply_text('Вы хотите добавить регулярную трату или единоразовую?', reply_markup=markup)
     return 1
@@ -278,7 +293,7 @@ async def regular_sum(update, context):
         await update.message.reply_text('Готово!',
                                         reply_markup=markup)
         return ConversationHandler.END
-    except Exception:
+    except Exception as error:
         await update.message.reply_text('На какую сумму и с какой периодичностью будут происходить платежи?\n'
                                         'Напишите только сумму в рублях и периодичность в днях в формате'
                                         ' "рубли.копейки дни".')
@@ -326,6 +341,15 @@ def remove_job_if_exists(name, context):
 
 
 async def unset(update, context):
+    db_sess = db_session.create_session()
+    name = update.message.from_user.username
+    user = db_sess.query(User).filter(User.username == name).first()
+    if not user:
+        reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
+        await update.message.reply_text('По-видимому, мы еще не знакомы, давайте познакомимся командой /start',
+                                        reply_markup=markup)
+        return ConversationHandler.END
     reply_keyboard = [['Транспорт', 'Здоровье'], ['Кафе/Продукты', 'Развлечения'], ['Другое', '/stop']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
     await update.message.reply_text('К какой категории относится регулярный платеж?',
@@ -365,6 +389,15 @@ async def unsetcateg(update, context):
 
 
 async def lim(update, context):
+    db_sess = db_session.create_session()
+    name = update.message.from_user.username
+    user = db_sess.query(User).filter(User.username == name).first()
+    if not user:
+        reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
+        markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
+        await update.message.reply_text('По-видимому, мы еще не знакомы, давайте познакомимся командой /start',
+                                        reply_markup=markup)
+        return ConversationHandler.END
     reply_keyboard = [['Транспорт', 'Здоровье'], ['Кафе/Продукты', 'Развлечения'], ['Другое', '/stop']]
     markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
     await update.message.reply_text('На какую категорию вы хотите установить лимит?',
