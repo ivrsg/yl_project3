@@ -4,13 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5fefb362-eb6f-4fe8-98e8-a7a063b8fdeb" name="Changes" comment="функция c банкоматами">
+    <list default="true" id="5fefb362-eb6f-4fe8-98e8-a7a063b8fdeb" name="Changes" comment="диалоги">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/finance.db" beforeDir="false" afterPath="$PROJECT_DIR$/db/finance.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/logging.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/map.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/map.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/img/stat.png" beforeDir="false" afterPath="$PROJECT_DIR$/static/img/stat.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747067924540</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="диалоги">
+      <option name="closed" value="true" />
+      <created>1747215478284</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1747215478284</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -239,6 +244,7 @@
     <MESSAGE value="функция для диаграммы" />
     <MESSAGE value="функция get_statistic" />
     <MESSAGE value="функция c банкоматами" />
-    <option name="LAST_COMMIT_MESSAGE" value="функция c банкоматами" />
+    <MESSAGE value="диалоги" />
+    <option name="LAST_COMMIT_MESSAGE" value="диалоги" />
   </component>
 </project>

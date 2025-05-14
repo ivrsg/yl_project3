@@ -51,14 +51,28 @@ async def help(update, context):
         f'/unset - отменить регулярные платежи в категории.\n'
         f'/clear - очистить все данные пользователя.\n'
         f'/get_statistic - получить отчет о тратах по категориям.\n'
-        f'/get_banks - получить карту с 10 ближайшими к введенному месту банкоматами.'
+        f'/get_banks - получить карту с 10 ближайшими к введенному месту банкоматами.\n'
+        f'/reset_expenses - сбросить сумму текущих расходов по вашему усмотрению. '
     )
+
+
+async def reset_expenses(update, context):
+    db_sess = db_session.create_session()
+    name = update.message.from_user.username
+    user = db_sess.query(User).filter(User.username == name).first()
+    id = user.id
+    con = sqlite3.connect('db/finance.db')
+    cur = con.cursor()
+    cur.execute("UPDATE expenses SET sum = '0'  WHERE users_id = ? ", (id,))
+    con.commit()
+    db_sess.commit()
+    await update.message.reply_text(f'К новым тратам! Дальше - больше ;)')
+    return ConversationHandler.END
 
 
 async def get_banks(update, context):
     name = update.message.from_user.username
     db_sess = db_session.create_session()
-    user = db_sess.query(User).filter(User.username == name).first()
     await update.message.reply_text(f'Введите адрес, рядом с которым хотите узнать расположение банкоматов.\n'
                                     f'<город> <улица> <дом>')
     return 1
@@ -435,6 +449,7 @@ def main():
     application.add_handler(CommandHandler("clear", clear))
     application.add_handler(CommandHandler("get_statistic", get_statistic))
     application.add_handler(CommandHandler("repeat", repeat))
+    application.add_handler(CommandHandler("reset_expenses", reset_expenses))
     conv_handler = ConversationHandler(
         entry_points=[CommandHandler('add', add)],
         states={
