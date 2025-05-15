@@ -307,7 +307,7 @@ async def regular_sum(update, context):
         await update.message.reply_text('Готово!',
                                         reply_markup=markup)
         return ConversationHandler.END
-    except Exception as error:
+    except Exception:
         await update.message.reply_text('На какую сумму и с какой периодичностью будут происходить платежи?\n'
                                         'Напишите только сумму в рублях и периодичность в днях в формате'
                                         ' "рубли.копейки дни".')
@@ -379,7 +379,7 @@ async def unsetcateg(update, context):
         usid = user.id
         cteg = db_sess.query(Expenses).filter(Expenses.users_id == usid,
                                               Expenses.category == update.message.text).first()
-        if not cteg.regular:
+        if not cteg or not cteg.first_regular:
             reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
             markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
             await update.message.reply_text('У вас нет регулярных платежей в этой категории', reply_markup=markup)
@@ -389,11 +389,8 @@ async def unsetcateg(update, context):
         cteg.period = None
         cteg.sum_regular = None
         db_sess.commit()
-        job_removed = remove_job_if_exists(update.message.text + str(usid), context)
-        if job_removed:
-            text = f'Регулярные платежи отменены в категории {update.message.text}'
-        else:
-            text = 'У вас нет регулярных платежей в этой категории'
+        remove_job_if_exists(update.message.text + str(usid), context)
+        text = f'Регулярные платежи отменены в категории {update.message.text}'
         reply_keyboard = [['/add', '/unset'], ['/lim', '/clear'], ['/get_statistic', '/get_banks']]
         markup = ReplyKeyboardMarkup(reply_keyboard, one_time_keyboard=False)
         await update.message.reply_text(text, reply_markup=markup)
